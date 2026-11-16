@@ -1,16 +1,73 @@
 {
   "flows": [
-    {"channel": "Meta", "headline": "Make informed decisions faster", "paywall_opens_on": "their Quick Reference", "note": "asks only “What’s your role?”"},
-    {"channel": "Apple Ads", "term": "drug checker app", "headline": "Check drug-drug interactions", "paywall_opens_on": "Annual", "note": "runs your Interaction Check before the price"},
-    {"channel": "Apple Ads", "term": "pill id", "headline": "Identify a mystery pill by shape, color, imprint", "paywall_opens_on": "Annual", "note": "Pill ID finds demeclocycline before the price"}
+    {
+      "channel": "Meta",
+      "label": "From your “Primary care multi-tool” ad",
+      "headline": "Make informed decisions faster",
+      "paywall_opens_on": "their Quick Reference",
+      "note": "one question, their role"
+    },
+    {
+      "channel": "Apple Ads",
+      "term": "drug checker app",
+      "label": "From the “drug checker app” search",
+      "headline": "Check drug-drug interactions",
+      "paywall_opens_on": "Annual",
+      "note": "your Interaction Check with hydrocodone, then alprazolam, before any price"
+    },
+    {
+      "channel": "Apple Ads",
+      "term": "pill id",
+      "label": "From the “pill id” search",
+      "headline": "Identify a mystery pill by shape, color, imprint",
+      "paywall_opens_on": "Annual",
+      "note": "Pill ID finds demeclocycline 150 mg before any price"
+    }
   ],
-  "prices": {"yearly": "$179.99", "monthly": "$24.99", "trial": "none", "source": "US App Store listing, In-App Purchases (epocrates+ Annual, epocrates+ Monthly)"},
-  "today": {"text": "every install meets the same first launch, whatever the ad or search promised", "source": "audit_frames"},
+  "prices": {
+    "yearly": "$179.99",
+    "monthly": "$24.99",
+    "trial": "none",
+    "source": "US App Store listing, In-App Purchases (epocrates+ Annual, epocrates+ Monthly)"
+  },
+  "today": {
+    "text": "one first launch for every install, whatever the ad or search promised",
+    "source": "audit_frames"
+  },
   "ideas": [
-    {"n": 1, "title": "Open on the tool they came for", "screen": "First value", "outcome": "CR +10–20%"},
-    {"n": 2, "title": "Name it on the paywall", "screen": "Paywall", "outcome": "CR +15–20%"},
-    {"n": 3, "title": "Ask one thing the ad didn’t answer", "screen": "One question", "outcome": "CR +10–15%"},
-    {"n": 4, "title": "Put clinicians’ words where they decide", "screen": "Paywall", "outcome": "CR +10–15%"},
-    {"n": 5, "title": "Make the annual saving impossible to miss", "screen": "Paywall", "outcome": "CR +5–15%"}
-  ]
+    {
+      "n": 1,
+      "title": "Open on the tool they came for",
+      "screen": "First win",
+      "outcome": "CR +10–20%"
+    },
+    {
+      "n": 2,
+      "title": "Name what they did on the paywall",
+      "screen": "Paywall",
+      "outcome": "CR +15–20%"
+    },
+    {
+      "n": 3,
+      "title": "Ask one thing the ad didn’t answer",
+      "screen": "One question",
+      "outcome": "CR +10–15%"
+    },
+    {
+      "n": 4,
+      "title": "Put clinicians’ words by the button",
+      "screen": "Paywall",
+      "outcome": "CR +10–15%"
+    },
+    {
+      "n": 5,
+      "title": "Show the annual saving",
+      "screen": "Paywall",
+      "outcome": "CR +5–15%, ARPU +10–15%"
+    }
+  ],
+  "outcome": {
+    "purchases": "+10–20%",
+    "arpu": "+10–15%"
+  }
 }

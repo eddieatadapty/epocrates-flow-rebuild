@@ -714,7 +714,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* nav */
 .jn-navw{position:sticky;top:0;z-index:60;padding:12px 12px 0}
 .jn-nav{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;gap:14px;padding:0 10px 0 22px;border-radius:999px;
-  background:rgba(243,241,237,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
+  background:var(--jn-navbg,rgba(243,241,237,.88));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
 .jn-logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:-.01em;white-space:nowrap;color:var(--jn-ink)}
 .jn-logo img{height:var(--jn-logo-h,24px);width:auto;display:block}
 .jn-logo img.jn-ic{height:28px;border-radius:7px}
@@ -791,12 +791,11 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-vid video,.jn-vid > img{width:100%;height:100%;object-fit:cover;display:block}
 .jn-vid > img.jn-fit{object-fit:contain;background:#fff}
 .jn-tag{position:absolute;z-index:3;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--jn-ink);font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 10px;border-radius:999px;display:flex;gap:6px;align-items:center;text-transform:uppercase}
-.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#0866FF}
-.jn-tag.asa::before{background:#0a84ff}
-.jn-tag.img::before{background:#8a8a8e}
+.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,#0866FF)}
 .jn-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
 .jn-strip img{width:100%;aspect-ratio:var(--ar,9/16);object-fit:cover;border-radius:8px;display:block;background:#ddd}
 .jn-adb .hook{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--jn-ink)}
+.jn-adb .hook small{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:var(--jn-mute);margin-top:4px}
 .jn-adb .en{margin-top:6px;font-size:14.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb .meta{margin-top:10px;font-size:13.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb dl{margin-top:8px;font-size:15px;line-height:1.5}
@@ -805,6 +804,15 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-adb .go{margin-top:20px}
 .jn-more{margin-top:16px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
 .jn-foot-l{margin-top:8px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
+/* every ad as its own card, stacked (Atlas): wide media for 16:9, a 300 px column for portrait ads and searches */
+.jn-adlist{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.jn-card{background:var(--jn-cream);border-radius:20px;padding:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start}
+.jn-card.tall{grid-template-columns:300px 1fr;align-items:center}
+.jn-card .jn-media{max-width:none;margin:0;width:100%}
+.jn-card .jn-vid{aspect-ratio:var(--ar,16/9);max-height:none}
+.jn-card.tall .jn-vid{max-height:560px}
+.jn-card .jn-strip img{aspect-ratio:var(--ar,16/9)}
+.jn-card .jn-adb .go{margin-top:20px}
 /* Apple Ads search ad, as the App Store shows it (animated) */
 .jn-vid.asa{--ar:3/4;background:#fff}
 .jn-asa{position:absolute;inset:0;background:#fff;color:#111;padding:44px 14px 14px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif;display:flex;flex-direction:column;gap:12px}
@@ -842,7 +850,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* idea rows */
 .jn-list{margin-top:40px;display:flex;flex-direction:column;max-width:980px;border-top:1px solid var(--jn-hair)}
 .jn-row{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:26px 6px;border-bottom:1px solid var(--jn-hair);width:100%;text-align:left;transition:background .2s}
-.jn-row:hover{background:#faf9f7}
+.jn-row:hover{background:var(--jn-hover,#faf9f7)}
 .jn-row > span{font-size:22px;font-weight:600;color:var(--jn-mute);letter-spacing:-.02em;padding-top:2px;font-variant-numeric:tabular-nums}
 .jn-row h3{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.3;color:var(--jn-ink)}
 .jn-row p{font-size:15.5px;line-height:1.55;color:var(--jn-mute);margin-top:6px;max-width:780px}
@@ -856,7 +864,10 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-og{position:absolute;left:50%;top:32px;width:58%;max-width:300px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:3px;opacity:.95}
 .jn-og i{aspect-ratio:1;background:var(--c);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:600 12px/1.25 Inter,sans-serif;font-style:normal;color:#fff;overflow:hidden}
 .jn-osh::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,27,26,.98) 46%,rgba(27,27,26,.1) 80%)}
-.jn-osh > *:not(.jn-og){position:relative;z-index:2}
+.jn-osh > *:not(.jn-og):not(.jn-oimg){position:relative;z-index:2}
+.jn-osh.jn-world{background:var(--jn-world,var(--jn-dark))}
+.jn-osh.jn-world::after{background:linear-gradient(0deg,rgba(0,0,0,.94) 46%,rgba(0,0,0,.08) 82%)}
+.jn-oimg{position:absolute;left:50%;top:36px;width:64%;max-width:330px;transform:translateX(-50%);opacity:.92;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
 .jn-osh .k{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .jn-osh h3{font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:8px;line-height:1.15;max-width:460px;color:#fff}
 .jn-nums{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
@@ -881,6 +892,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-ph .jn-h1p b{font-weight:600;color:var(--jn-mute)}
 .jn-tool{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px}
 .jn-seg{display:inline-flex;background:var(--jn-cream);border-radius:999px;padding:4px}
+.jn-langnote{font-size:13.5px;line-height:1.5;color:var(--jn-mute);margin-top:12px;max-width:780px}
 .jn-seg button{height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--jn-ink2)}
 .jn-seg button.on{background:#fff;color:var(--jn-ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 html.jn #duo{max-width:1200px;width:auto;margin:0 auto;padding:0 40px}
@@ -893,21 +905,22 @@ html.jn .au-walk .au-walkbar i{display:block;height:3px;border-radius:3px;backgr
 html.jn .au-walk .au-walkbar i b{display:block;height:100%;background:var(--jn-lt);width:0;transition:width .5s}
 html.jn .au-walk:not(.on) .au-walkbar{display:none}
 html.jn .au-walk.on{position:sticky;top:84px}
-html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:8px}
-html.jn .au-duo-steps button{height:44px;padding:0 18px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:15px;font-weight:500;border-radius:999px}
+html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:6px}
+html.jn .au-duo-steps button{height:44px;padding:0 15px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:14.5px;font-weight:500;border-radius:999px;white-space:nowrap}
 html.jn .au-duo-steps button:hover{background:var(--jn-cream2)}
 html.jn .au-duo-steps button.au-today{background:#fff;box-shadow:inset 0 0 0 1.5px var(--jn-faint);border:0;color:var(--jn-mute)}
 html.jn .au-duo-steps button.on{background:var(--jn-ink);color:#fff;box-shadow:none}
 html.jn .au-duo-steps button.au-diff::after{background:var(--jn-acc2);border-color:#fff}
 html.jn .au-duo-sep{color:var(--jn-mute);letter-spacing:.12em;font-weight:500}
-html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-ink2);max-width:780px;font-size:15px}
+html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-mute);max-width:900px;font-size:15.5px;min-height:24px}
+html.jn .au-duo-stepcap b{color:var(--jn-ink);font-weight:600}
 html.jn .au-duo.au-n3{margin-top:30px;gap:28px;width:auto;margin-left:0;transform:none}
 html.jn .au-duo-ph{width:312px}
 html.jn .au-duo-fr{width:312px;height:675px;border-radius:46px;box-shadow:0 0 0 6px var(--au-ring),0 30px 60px rgba(27,27,26,.22)}
 html.jn .au-duo-fr iframe{transform:scale(.8)}
 html.jn .au-duo-pill{height:34px;background:var(--jn-cream);box-shadow:none;border-radius:999px;font-size:13.5px;font-weight:500;padding:0 14px 0 6px;max-width:332px;color:var(--jn-ink2);margin:0 auto 14px;width:fit-content}
-html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:#0866FF;font-size:11.5px;font-weight:500;border-radius:99px}
-html.jn .au-duo-pill.asa b{background:#1b1b1a}
+html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:var(--au-ring);font-size:11.5px;font-weight:500;border-radius:99px}
+html.jn .au-duo-steps .jn-n{font-variant-numeric:tabular-nums}
 html.jn .au-duo-cap{text-align:center;color:var(--jn-mute);min-height:84px;margin-top:16px;font-size:14px}
 html.jn .au-duo-cap .au-duo-k{color:var(--jn-ink);letter-spacing:.12em;font-size:12px;margin-bottom:4px}
 html.jn .au-duo-recs{margin-top:6px}
@@ -915,7 +928,7 @@ html.jn .au-rec{background:var(--jn-cream);border:0;border-radius:14px}
 html.jn .au-rec:hover,html.jn .au-rec.on{background:#fff;box-shadow:inset 0 0 0 1.5px var(--au-ring)}
 html.jn .au-rec>i{background:var(--au-ring)}
 html.jn .au-rec mark{background:var(--jn-soft);color:var(--jn-acc)}
-html.jn .au-rec-v{color:var(--jn-ink);letter-spacing:.1em}
+html.jn .au-rec-v{color:var(--au-ring);letter-spacing:.1em}
 html.jn .au-duo-tog button{border:0;background:var(--jn-cream)}
 html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:64px}
@@ -927,7 +940,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icard h4{font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--jn-ink)}
 .jn-icard p{font-size:15px;line-height:1.55;color:var(--jn-mute)}
 .jn-icard .kept{font-size:13px;color:var(--jn-mute);border-top:1px solid var(--jn-hair);padding-top:10px;margin-top:6px}
-.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-dark);color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-world,var(--jn-dark));color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 .jn-qg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(4,1fr);gap:3px;padding:3px}
 .jn-qg i{background:var(--c);opacity:.85}
 .jn-qr::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,27,26,.95) 30%,rgba(27,27,26,.55))}
@@ -947,7 +960,8 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-hin{grid-template-columns:1fr;padding-top:120px;padding-bottom:36px}
   .jn-hero{min-height:0}
   .jn-fan{height:330px;max-width:520px}
-  .jn-two,.jn-lib,.jn-outc{grid-template-columns:1fr}
+  .jn-two,.jn-lib,.jn-outc,.jn-card,.jn-card.tall{grid-template-columns:1fr}
+  .jn-card.tall .jn-media{max-width:300px}
   .jn-two{gap:36px}
   .jn-stats > .jn-wrap{grid-template-columns:repeat(2,1fr)}
   .jn-stat:nth-child(3){border-left:0}
@@ -970,7 +984,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-fan{display:none}
   .jn-hin{padding:104px 22px 30px}
   .jn-sec{padding-top:72px}
-  .jn-lib{padding:18px;gap:24px}
+  .jn-lib,.jn-card{padding:18px;gap:24px}
   .jn-row{grid-template-columns:40px 1fr;gap:10px}
   .jn-icards{grid-template-columns:1fr}
   .jn-osh{min-height:400px;padding:26px 22px}
@@ -978,8 +992,9 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 }
 @media (max-width:520px){.jn-logo span.jn-name,.jn-logo .jn-mask{display:none}.jn-logo img:not(.jn-ic){max-width:96px;height:auto;max-height:22px;object-fit:contain;object-position:left center}.jn-demo{padding:0 11px}.jn-stat b{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.jn-fan img.jn-ic,.jn-post-m img{animation:none}.jn-slots i::before,.jn-slots i span{animation:none;opacity:.8}}
-html.jn{--jn-dark:#22211f;--jn-lt:#8dcedc;--jn-acc:#102038;--jn-acc2:#0193b2;--jn-soft:#dbf0f4}
+html.jn{--jn-dark:#22211f;--jn-lt:#8dcedc;--jn-acc:#102038;--jn-acc2:#0193b2;--jn-soft:#d9dbdf;--jn-cream:#ebecee;--jn-cream2:#dee0e3;--jn-hover:#f3f4f5;--jn-navbg:rgba(235,236,238,.88);--jn-world:radial-gradient(70% 90% at 82% 8%,rgba(1,147,178,.55),transparent 62%),radial-gradient(55% 70% at 8% 100%,rgba(16,32,56,.35),transparent 70%),linear-gradient(180deg,#0d141e,#0c1119)}html.jn .jn-qg{display:none}html.jn .jn-qr::before{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.2))}
 /* JUNOCSS:END */
+/* EPO:POSTFIX */.jn-card .jn-vid:has(> .jn-post){aspect-ratio:9/16}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" id="jnFont">
 </head>
@@ -1081,25 +1096,25 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8dcedc;--jn-acc:#102038;--jn-acc2:#0193b2;--j
         <h2 class="au-h2">One Meta ad and two searches. <span>One first launch for all of them.</span></h2>
       </div>
       <div>
-        <p>Your newest Meta ads, running since 13 November 2026, sell the app as a <b>“Primary care multi-tool”</b> and link to the App Store. Your Apple Ads search ad shows on <b>“drug checker app”</b> (61% of US searches) and <b>“pill id”</b> (20%). Three different jobs, and every install meets the same first launch.</p><p>Flow Builder can open a different flow by the campaign or keyword the install came from, so the first screens keep the ad’s promise, and each source is judged on the subscriptions it brings.</p>
+        <p>Your newest Meta ads sell the app as a <b>“Primary care multi-tool”</b> and link to the App Store. Your Apple Ads show on <b>“drug checker app”</b> (61% of US searches) and <b>“pill id”</b> (20%). Three different jobs, and every install meets the same first launch.</p><p>Flow Builder can open a different flow by the campaign or keyword the install came from, so the first screens keep the ad’s promise, and each source is judged on the subscriptions it brings.</p>
       </div>
     </div>
     <div class="au-duo-stats"><div><b>22</b><span>live epocrates ads in the US Meta Ad Library, in 50 versions; 3 of them link to the App Store</span></div><div><b>30</b><span>US search terms your Apple Ads show on, 16 Oct–16 Nov 2026</span></div><div><b>1</b><span>first launch every install meets today, whatever it came from</span></div></div>
     <div class="au-pf"><div class="au-pf-h"><h3>Your Meta ads, sorted by promise</h3><p>Every active ad from the epocrates page in the US Ad Library on 16 November 2026, grouped by what it promises and where it links.</p></div><div class="au-pf-bar"><i style="flex:18;background:var(--st-accent)" title="Go beyond the basics with epocrates+"></i><i style="flex:12;background:var(--st-hi)" title="Primary care multi-tool"></i><i style="flex:12;background:var(--st-ink2)" title="Medical news articles"></i><i style="flex:8;background:var(--st-ink3)" title="Join 1M+ Confident Clinicians"></i></div><div class="au-pf-leg"><span><i style="background:var(--st-accent)"></i>Go beyond the basics with epocrates+ · 18</span><span><i style="background:var(--st-hi)"></i>Primary care multi-tool · 12</span><span><i style="background:var(--st-ink2)"></i>Medical news articles · 12</span><span><i style="background:var(--st-ink3)"></i>Join 1M+ Confident Clinicians · 8</span></div><div class="au-pf-grid"><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/meta-plus-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Most versions · running since Feb 2026</span><span class="au-pf-n">18 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Go beyond the basics with epocrates+. Premium, evidence based clinical guidance to support confident care decisions.”</div><div class="au-pf-meta">9 ads · 13 Feb–14 Mar 2026 · links to epocrates.com/discover/introductory-offer</div><dl><dt>In the ad</dt><dd>“Save 50%”, “$149.95 / first year”, Learn More.</dd><dt>The promise</dt><dd>epocrates+ at $149.95 for the first year, on the web.</dd><dt>Today it lands on</dt><dd>epocrates.com, not the app.</dd></dl><div class="au-pf-go"><span>Links to your site, so no app flow of its own.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/meta-install-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Newest · running now</span><span class="au-pf-n">12 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“epocrates offers primary care prescription support when you need it most.”</div><div class="au-pf-meta">3 ads · since 13 Nov 2026 · links to the App Store</div><dl><dt>In the ad</dt><dd>“Make informed decisions faster” over your home screen, Install now.</dd><dt>The promise</dt><dd>One app for a primary care prescriber.</dd><dt>Today it lands on</dt><dd>The same first launch as every install.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="a">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/meta-article-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Content</span><span class="au-pf-n">12 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Does tattooing increase the risk of melanoma?” and five more</div><div class="au-pf-meta">6 ads · Dec 2025–Aug 2026 · link to epocrates.com articles</div><dl><dt>In the ad</dt><dd>A study summary, Learn More.</dd><dt>The promise</dt><dd>Read the story on epocrates.com.</dd><dt>Today it lands on</dt><dd>An article on epocrates.com.</dd></dl><div class="au-pf-go"><span>Links to your site.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/meta-join-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Subscribe</span><span class="au-pf-n">8 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Subscribe for instant access to trusted clinical tools and up-to-date drug info.”</div><div class="au-pf-meta">4 ads · since 9 Jan 2026 · links to epocrates.com/account/subscription</div><dl><dt>In the ad</dt><dd>“Your Clinical Intelligence Platform”, Subscribe.</dd><dt>The promise</dt><dd>Subscribe now, on the web.</dd><dt>Today it lands on</dt><dd>epocrates.com, not the app.</dd></dl><div class="au-pf-go"><span>Links to your site; its words are on paywall B.</span></div></div></article></div><p class="au-pf-note">Counts are ad versions as the Ad Library shows them, not spend or reach.</p></div>
-    <div class="au-duo-h"><h3>One ad, two searches, three versions</h3><p>Left to right: a prescriber who tapped your Meta ad, someone who searched “drug checker app”, someone who searched “pill id”. Tap the steps, or tap inside any phone.</p></div>
+    <div class="au-duo-h"><h3>Three ads, three first launches</h3><p>Left to right: a prescriber who tapped your Meta ad, someone who searched “drug checker app”, someone who searched “pill id”. Tap the steps, or tap inside any phone.</p></div>
     <div class="au-duo-steps" id="duoSteps" aria-label="Steps, in every phone"></div>
     <div class="au-duo-ideas" id="duoIdeas" aria-label="The five ideas, in every phone"></div>
     <p class="au-duo-stepcap" id="duoStepCap"></p>
     <div class="au-duo-tog" role="group" aria-label="Which ad"><button type="button" data-duoone="a" class=on>Meta ad · “Primary care multi-tool”</button><button type="button" data-duoone="b">Search · “drug checker app”</button><button type="button" data-duoone="c">Search · “pill id”</button></div>
     <div class="au-duo au-n3" id="duoStage" data-one="a">
-      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Meta ad</b><span>Primary care multi-tool · Install now</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>“drug checker app” · 61%</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>“pill id” · 20%</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
+      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Meta ad</b><span>Find the right tool</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>Check drugs together</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>Identify a pill</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
     </div>
     <p class="au-duo-hint">Tap through any phone and the others follow. A dot marks the screens that differ by ad.</p>
     <table class="au-duo-tbl" id="duoTbl"></table>
-    <div class="au-duo-next"><div><b>Day 1</b><h4>Pass the campaign and keyword into Adapty</h4><p>After a one-time SDK setup, the Meta campaign or Apple Ads keyword of each install arrives as a user attribute and picks the flow at first open. No app release.</p></div><div><b>Week 1</b><h4>One version per source</h4><p>The primary care ad, the drug-check searches and the pill searches each get their own first screens; searches for your own name keep the default flow.</p></div><div><b>Week 2</b><h4>Judge each source on what it earns</h4><p>Each version against today’s first launch, measured on paid subscriptions and what each install from that source earns, so spend follows the sources that pay.</p></div></div>
-    <p class="au-adn">Most of your Meta ads (19 of 22) link to epocrates.com, not the app: they sell epocrates+ on the web or an article. In Apple Ads you show on 79% of searches for “epocrates: drug checker app” but only 2% for “epocrates”, so another app can take the top slot on your own name. Search data is account-level. Your epocrates+ ads offer $149.95 for the first year on epocrates.com, where the App Store lists $179.99 a year; the app never sees that offer. This layer carries no range: only a test per source can give one.</p>
+    <div class="au-duo-next"><div><b>Do this week</b><h4>Open “drug checker app” installs on your Interaction Check</h4><p>One flow, built in Flow Builder from your own screens and live without an app release: the search that names the job opens on the tool, before any price.</p></div><div><b>Then</b><h4>One paywall, the source as the variable</h4><p>One template for all three: the headline, the tool above the plans and the proof change with the Meta campaign or the search term. $179.99 and $24.99 stay as listed.</p></div><div><b>And measure</b><h4>Judge each source on what it earns, not installs</h4><p>Adapty reports purchases, renewals and revenue for the Meta campaign, “drug checker app” and “pill id” separately, so spend follows the source that pays.</p></div></div>
+    <p class="au-adn">Most of your Meta ads (19 of 22) link to epocrates.com, not the app: they sell epocrates+ on the web or an article. On Apple Ads you show on 79% of searches for “epocrates: drug checker app” but only 2% for “epocrates”, so another app can take the top slot on your own name. Search data is account-level. Your epocrates+ ads offer $149.95 for the first year on epocrates.com, where the App Store lists $179.99 a year; the app never sees that offer. This layer carries no range: only a test per source can give one.</p>
   </div>
-  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Meta ad · “Primary care multi-tool”", "chan": "Meta ad", "pill": "Primary care multi-tool · Install now", "version": "Version A · Your tools first", "recs": [{"step": "ask", "title": "Ask the role, not the specialty", "why": "<b>Try</b> one question, their role, <b>because</b> the ad already said primary care, and the role decides which tools they open first.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Open on their Quick Reference", "why": "<b>Try</b> your home screen with four Reference tools picked for that role, <b>because</b> “Primary care multi-tool” promises tools, and seeing theirs keeps the promise.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Paywall over their own tools", "why": "<b>Try</b> “Go beyond the basics with epocrates+” over the Quick Reference they just set, <b>because</b> the price then reads as more of what they saw.", "impact": "+15–20%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "label": "Search · “drug checker app”", "chan": "Apple Ads search", "pill": "“drug checker app” · 61%", "version": "Version B · The check first", "recs": [{"step": "ask", "title": "Ask what goes on the list", "why": "<b>Try</b> Rx, OTC or herbs and supplements as the only question, <b>because</b> the search already said the job, and the answer names their list twice after.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Run the check before the price", "why": "<b>Try</b> your Interaction Check with hydrocodone and one tap to add alprazolam, <b>because</b> a “drug checker app” search should check drugs first.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Show the year against the month", "why": "<b>Try</b> $15.00 a month billed yearly beside $24.99 monthly, <b>because</b> a $179.99 total alone hides that it costs $119.89 less than a year of monthly.", "impact": "+5–15%", "il": "CR · ARPU +10–15%"}]}, {"k": "c", "ad": "c", "label": "Search · “pill id”", "chan": "Apple Ads search", "pill": "“pill id” · 20%", "version": "Version C · Proof first", "recs": [{"step": "ask", "title": "Ask what they can see", "why": "<b>Try</b> imprint, shape and color, or a photo, <b>because</b> that is how Pill ID searches, so the answer sets up the very next screen.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Identify a pill before the price", "why": "<b>Try</b> Pill ID with their answer leading the form, <b>because</b> someone who typed “pill id” has a pill in hand.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Lead with clinicians’ words", "why": "<b>Try</b> 4.4 stars from 7.2K ratings and reviews about Pill ID at the top, <b>because</b> this searcher is meeting epocrates for the first time.", "impact": "+10–15%", "il": "CR to purchase"}]}], "rows": [{"id": "ad", "h": "Where they came from", "a": "Your Meta install ad: “epocrates offers primary care prescription support when you need it most.” · Primary care multi-tool.", "b": "Your App Store search ad, on “drug checker app” (61% share of voice).", "c": "Your App Store search ad, on “pill id” (20% share of voice)."}, {"id": "welcome", "h": "Welcome", "a": "“Make informed decisions faster”, the ad’s own headline.", "b": "“Check drug-drug interactions”, from your listing.", "c": "“Identify a mystery pill by shape, color, imprint”, from your listing."}, {"id": "ask", "h": "One question", "a": "“What’s your role?”: MD/DO, NP, PA, pharmacist, medical student (A1).", "b": "“What goes on your list?”: Rx, OTC, herbs &amp; supplements (B1).", "c": "“What can you see on the pill?”: an imprint, shape and color, a photo (C1)."}, {"id": "value", "h": "First value", "a": "Their Quick Reference, four tools set for their role (A2).", "b": "Your Interaction Check: hydrocodone, then alprazolam, with your Additional Considerations (B2).", "c": "Pill ID: AN 54, round, red, found as demeclocycline 150 mg (C2)."}, {"id": "paywall", "h": "Paywall", "a": "Result-led: “Go beyond the basics with epocrates+” over their own tools (A3).", "b": "Plan-led: $15.00 a month billed yearly beside $24.99, and the year as a bar (B3).", "c": "Proof-led: 4.4 stars and three reviews about Pill ID on top (C3)."}], "tableTitle": "The same app, answering three different sources.", "tableSub": "The five ideas sit underneath all three. These are the screens that change with the source; each row opens that step in every phone.", "steps": [{"id": "ad", "label": "The ad"}, {"sep": "Proposed"}, {"id": "welcome", "label": "Welcome"}, {"id": "ask", "label": "One question", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "value", "label": "First value", "ids": {"a": "value-a", "b": "value-b", "c": "value-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "home", "label": "✕ into the app"}], "stepCaps": {"home": "Same in every version: ✕ closes straight into your Reference tab, with no second paywall after the first."}}</script>
+  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Meta ad · “Primary care multi-tool”", "chan": "Meta ad", "pill": "Find the right tool", "version": "From your “Primary care multi-tool” ad", "recs": [{"step": "ask", "title": "Ask their role", "why": "The ad already says primary care. One question, physician, NP, PA, pharmacist or student, picks which of your tools open first.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Open on their Quick Reference", "why": "Four of your Reference tools set for that role, on your own home screen, before any price: the multi-tool the ad promised.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Put the paywall over their tools", "why": "Your own ad line, “Go beyond the basics with epocrates+”, above the Quick Reference they just set, with the year first.", "impact": "+15–20%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "label": "Search · “drug checker app”", "chan": "Apple Ads search", "pill": "Check drugs together", "version": "From the “drug checker app” search", "recs": [{"step": "ask", "title": "Ask what goes on the list", "why": "Rx, OTC, or herbs and supplements. The search already names the job, and the answer labels their list on the next two screens.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Run the check before the price", "why": "Your Interaction Check with hydrocodone, one tap to add alprazolam, and your Additional Considerations. It is what they searched for.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Show the year against the month", "why": "$15.00 a month billed yearly beside $24.99 monthly, and the year as a bar: $179.99 against $299.88 of monthly.", "impact": "+5–15%", "il": "CR · ARPU +10–15%"}]}, {"k": "c", "ad": "c", "label": "Search · “pill id”", "chan": "Apple Ads search", "pill": "Identify a pill", "version": "From the “pill id” search", "recs": [{"step": "ask", "title": "Ask what they can see", "why": "An imprint, a shape and color, or a photo. That is how Pill ID searches, so the answer leads the form on the next screen.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "value", "title": "Find the pill before the price", "why": "Pill ID with their answer first and one tap to the result: AN 54, round, red, demeclocycline 150 mg, as on your App Store screenshot.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Lead the paywall with clinicians’ words", "why": "Your 4.4 stars from 7.2K ratings and three App Store reviews about Pill ID, for someone meeting epocrates for the first time.", "impact": "+10–15%", "il": "CR to purchase"}]}], "rows": [{"id": "ad", "h": "Where they came from", "a": "Your Meta ad, “Primary care multi-tool”, then your App Store page. Tap Install now.", "b": "Your ad on the “drug checker app” search, about 61% of US searches. Tap Get.", "c": "Your ad on the “pill id” search, about 20% of US searches. Tap Get."}, {"id": "welcome", "h": "Arrive", "a": "“Make informed decisions faster”, the ad’s own headline, over your navy and “Start using epocrates”.", "b": "“Check drug-drug interactions”, from your listing.", "c": "“Identify a mystery pill by shape, color, imprint”, from your listing."}, {"id": "ask", "h": "One question", "a": "“What’s your role?” Physician, NP, PA, pharmacist or medical student.", "b": "“What goes on your list?” Rx drugs, OTC drugs, herbs and supplements.", "c": "“What can you see on the pill?” An imprint, its shape and color, or a photo."}, {"id": "value", "h": "First win", "a": "Their Quick Reference: four of your tools, set for their role.", "b": "Your Interaction Check: hydrocodone, then alprazolam, with your Additional Considerations.", "c": "Pill ID: AN 54, round, red, found as demeclocycline 150 mg."}, {"id": "paywall", "h": "Paywall", "a": "“Go beyond the basics with epocrates+” over their own tools; the year leads.", "b": "$15.00 a month billed yearly beside $24.99 monthly, and the year as a bar.", "c": "4.4 stars and three reviews about Pill ID on top, then the plans."}], "tableTitle": "The same app, answering three different sources.", "tableSub": "The five ideas sit underneath all three. These are the screens that change with the source; each row opens that step in every phone.", "steps": [{"id": "ad", "label": "The ad"}, {"id": "welcome", "label": "Arrive"}, {"id": "ask", "label": "One question", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "value", "label": "First win", "ids": {"a": "value-a", "b": "value-b", "c": "value-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "home", "label": "In the app"}], "stepCaps": {"home": "Your Reference tab, the same for every source. The paywall’s ✕ lands here, never on a second paywall."}, "stepLine": {"ad": "<b>Step 1.</b> Your Meta ad on the left, the “drug checker app” and “pill id” searches on the right. Tap Install now or Get.", "welcome": "<b>Step 2. Proposed:</b> the first screen keeps the promise in the ad’s own words, in your navy, with “Start using epocrates”.", "ask": "<b>Step 3. Proposed:</b> one question, a different one per source: their role, their list, what they can see on the pill.", "value": "<b>Step 4. Proposed:</b> the tool before any price: their Quick Reference, an interaction check, a pill found.", "paywall": "<b>Step 5. Proposed:</b> epocrates+ at your listed prices. The headline names what they just did; the ✕ closes into the app.", "home": "<b>Step 6. Proposed:</b> your Reference tab, with no second paywall."}}</script>
 </section>
 
 <section class="au-sec au-white" id="prototype">
@@ -1387,7 +1402,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8dcedc;--jn-acc:#102038;--jn-acc2:#0193b2;--j
     <!-- shown when CONTENT.liveUrl is set: assets/qr-app.png = qr.swift "<liveUrl>?app" -->
     <div class="au-qr" id="qrCard" hidden><img src="assets/qr-app.png" alt="QR code that opens the prototype full screen"><div><b>Try it on your phone</b><p>Scan to open the prototype full screen, the way a new user would see it.</p></div></div>
     <div class="au-mobw" id="qrMob" hidden><a class="au-btn" href="?app">Open it full screen</a></div>
-    <div class="au-demo-band" id="demoBand"><p><b>Want these versions live?</b> Every screen here can be built in Adapty Flow Builder and tested against today’s, one source at a time.</p><a class="au-btn" href="https://adapty.io/schedule-demo/" target="_blank" rel="noopener">Book a demo</a></div>
+    <div class="au-demo-band" id="demoBand"><p><b>Want these flows live?</b> Every screen here can be built in Adapty Flow Builder and tested against today’s, one source at a time.</p><a class="au-btn" href="https://adapty.io/schedule-demo/" target="_blank" rel="noopener">Book a demo</a></div>
   </div>
 </section>
 
@@ -1448,105 +1463,478 @@ html.jn{--jn-dark:#22211f;--jn-lt:#8dcedc;--jn-acc:#102038;--jn-acc2:#0193b2;--j
               introLede, endTitle} — ~30 s total; the last segment has end:true (the end card) -->
 <script type="application/json" id="content">
 {
-  "app": "epocrates",
-  "state": {"ad": "a", "role": "np", "list": ["rx", "herb"], "see": "imprint", "drugs": "2", "found": "1", "plan": "year"},
-  "labels": {
-    "role": {"md": "physicians", "np": "NPs", "pa": "PAs", "rph": "pharmacists", "stu": "medical students"},
-    "list": {"rx": "Rx drugs", "otc": "OTC drugs", "herb": "herbs & supplements"},
-    "ad": {"a": "Meta ad", "b": "“drug checker app”", "c": "“pill id”"}
-  },
-  "chips": {"ad": "The ad", "welcome": "Welcome", "ask-a": "Your role", "ask-b": "Your list", "ask-c": "What you see",
-            "value-a": "Quick Reference", "value-b": "Interaction Check", "value-c": "Pill ID",
-            "paywall-a": "Paywall", "paywall-b": "Paywall", "paywall-c": "Paywall", "home": "The app"},
-  "hero": ["value-b", "paywall-a", "value-c"],
-  "outcome": {"cr": "+20%", "arpu": "+15%"},
-  "ideas": [
-    {"screen": "value-a", "title": "Open on the tool they came for", "what": "Your Meta ad promises a “Primary care multi-tool”; the searches say “drug checker app” and “pill id”. Each version opens on that tool before any price: their Quick Reference, your Interaction Check with hydrocodone and alprazolam, or Pill ID finding demeclocycline 150 mg.", "impact": "+10–20%", "il": "CR to purchase"},
-    {"screen": "paywall-a", "title": "Name it on the paywall", "what": "The paywall headline picks up what they just did: “Go beyond the basics with epocrates+” over their own Quick Reference, “Check interactions, then go beyond the basics”, or “Pill ID found demeclocycline”, with their role or list on a chip.", "impact": "+15–20%", "il": "CR to purchase"},
-    {"screen": "ask-a", "title": "Ask one thing the ad didn’t answer", "what": "One question per version, and the next screen uses it: the role for the primary care ad (MD/DO, NP, PA, pharmacist, student), what goes on the list for “drug checker app”, what they can see on the pill for “pill id”.", "impact": "+10–15%", "il": "CR to purchase"},
-    {"screen": "paywall-c", "title": "Put clinicians’ words where they decide", "what": "Your 4.4 stars from 7.2K US ratings and clinicians’ own App Store reviews (“my go to for quick medication information, dosing, interactions”) sit next to the plans, not only on the store page.", "impact": "+10–15%", "il": "CR to purchase"},
-    {"screen": "paywall-b", "title": "Make the annual saving impossible to miss", "what": "$179.99 a year is $15.00 a month, 40% less than $24.99 monthly, or $119.89 less over a year ($299.88 vs $179.99). Annual comes first and preselected, with the saving on it.", "impact": "+5–15%", "il": "CR · ARPU +10–15%"}
+ "app": "epocrates",
+ "state": {
+  "ad": "a",
+  "role": "np",
+  "list": [
+   "rx",
+   "herb"
   ],
-  "panel": {
-    "ad":        {"idea": 0, "t": "Where they came from", "why": "Version A starts on your Meta install ad, “Primary care multi-tool”; B and C on your App Store search ad for “drug checker app” and “pill id”."},
-    "welcome":   {"idea": 0, "t": "Welcome, in the ad’s words", "why": "Your navy, your pattern and your “Start using epocrates” button, with the headline of the ad or search they came from."},
-    "ask-a":     {"idea": 3, "t": "Ask the role, not the specialty", "why": "<b>Try</b> one question, their role, <b>because</b> the ad already said primary care, and the role decides which of your tools they open first.", "iv": "CR +10–15%", "il": "to purchase", "also": "Version A, recommendation A1."},
-    "ask-b":     {"idea": 3, "t": "Ask what goes on the list", "why": "<b>Try</b> asking whether the list holds Rx, OTC or herbs and supplements, <b>because</b> “drug checker app” already says the job, and the answer names the list on the next two screens.", "iv": "CR +10–15%", "il": "to purchase", "also": "Version B, recommendation B1."},
-    "ask-c":     {"idea": 3, "t": "Ask what they can see", "why": "<b>Try</b> asking whether they see an imprint, a shape and color or can take a photo, <b>because</b> that is how Pill ID searches, so the answer sets up the very next screen.", "iv": "CR +10–15%", "il": "to purchase", "also": "Version C, recommendation C1."},
-    "value-a":   {"idea": 1, "t": "Their Quick Reference, set for their role", "why": "<b>Try</b> opening on your home screen with four Reference tools picked for their role, <b>because</b> “Primary care multi-tool” promises tools, and seeing their own set keeps that promise before any price.", "iv": "CR +10–20%", "il": "to purchase", "also": "Version A, recommendation A2. The four tools per role are our pick; your usage data would set the real order."},
-    "value-b":   {"idea": 1, "t": "Run the check before the price", "why": "<b>Try</b> your Interaction Check with hydrocodone, one tap to add alprazolam and your Additional Considerations, <b>because</b> someone who searched “drug checker app” should check drugs before anything else.", "iv": "CR +10–20%", "il": "to purchase", "also": "Version B, recommendation B2. Drugs and text are the ones on your App Store screenshot."},
-    "value-c":   {"idea": 1, "t": "Identify a pill before the price", "why": "<b>Try</b> Pill ID with their answer leading the form and one tap to the result, <b>because</b> someone who searched “pill id” has a pill in hand, and finding it is the first value.", "iv": "CR +10–20%", "il": "to purchase", "also": "Version C, recommendation C2. The pill is the one on your App Store screenshot."},
-    "paywall-a": {"idea": 2, "t": "A paywall over their own tools", "why": "<b>Try</b> your ad’s own line, “Go beyond the basics with epocrates+”, over the Quick Reference they just set, <b>because</b> the price then reads as more of what they saw, for their role.", "iv": "CR +15–20%", "il": "to purchase", "also": "Also on this screen: clinicians’ words (idea 4) and the annual saving (idea 5)."},
-    "paywall-b": {"idea": 5, "t": "The year against the month", "why": "<b>Try</b> $15.00 a month billed yearly beside $24.99 monthly, and a bar of $179.99 against $299.88, <b>because</b> today the annual saving has to be worked out by the buyer.", "iv": "CR +5–15%", "il": "to purchase · ARPU +10–15%", "also": "Also on this screen: the headline names the check (idea 2) and a clinician review (idea 4)."},
-    "paywall-c": {"idea": 4, "t": "Clinicians’ words first", "why": "<b>Try</b> 4.4 stars from 7.2K ratings and three App Store reviews about Pill ID at the top, <b>because</b> someone who typed “pill id” is meeting epocrates for the first time.", "iv": "CR +10–15%", "il": "to purchase", "also": "Also on this screen: “Pill ID found demeclocycline” (idea 2) and the annual saving (idea 5)."},
-    "home":      {"idea": 0, "t": "✕ goes straight into the app", "why": "Closing the paywall lands on your Reference tab. No second paywall after the first."}
+  "see": "imprint",
+  "drugs": "2",
+  "found": "1",
+  "plan": "year"
+ },
+ "labels": {
+  "role": {
+   "md": "physicians",
+   "np": "NPs",
+   "pa": "PAs",
+   "rph": "pharmacists",
+   "stu": "medical students"
   },
-  "langs": [],
-  "i18n": {},
-  "prices": {},
-  "labelsI18n": {},
-  "liveUrl": "https://eddieatadapty.github.io/epocrates-flow-rebuild/",
-  "video": "assets/walkthrough.mp4",
-  "poster": "assets/walkthrough-poster.jpg",
-  "compare": null,
-  "tour": {
-    "introLede": "Three ads, three first launches. In your design, at your prices.",
-    "endTitle": "Three ads, three versions of one epocrates.",
-    "segments": [
-      {"id": "ad", "d": 3000, "st": {"ad": "a"}, "tap": [".ep-inst", 2400]},
-      {"id": "welcome", "d": 2200, "tap": [".ep-btn", 1600]},
-      {"id": "ask-a", "d": 2400, "st": {"role": "np"}, "tap": ["[data-pick=\"role:np\"]", 1700]},
-      {"id": "value-a", "d": 2600, "pop": ".ep-qr"},
-      {"id": "paywall-a", "d": 2800},
-      {"id": "ad", "d": 2000, "st": {"ad": "b"}, "tap": [".ep-get", 1400]},
-      {"id": "ask-b", "d": 2000, "st": {"list": ["rx", "herb"]}},
-      {"id": "value-b", "d": 1600, "st": {"drugs": "1"}, "tap": [".ep-add", 1100]},
-      {"id": "value-b", "d": 2200, "st": {"drugs": "2"}, "reveal": ".ep-cons"},
-      {"id": "paywall-b", "d": 2600},
-      {"id": "ad", "d": 1800, "st": {"ad": "c"}, "tap": [".ep-get", 1200]},
-      {"id": "value-c", "d": 1500, "st": {"see": "imprint", "found": "0"}, "tap": [".ep-pform .ep-btn", 1000]},
-      {"id": "value-c", "d": 2000, "st": {"found": "1"}, "pop": ".ep-pill"},
-      {"id": "paywall-c", "d": 2600},
-      {"id": "home", "d": 2600, "end": true}
-    ],
-    "captions": {
-      "ad": {"k": "Three ads", "t": "Each install opens where it came from", "l": "Your Meta ad, or your search ad for “drug checker app” or “pill id”."},
-      "welcome": {"k": "Context", "t": "Welcome, in the ad’s words", "l": "Your navy, your pattern, your “Start using epocrates”."},
-      "ask-a": {"n": 3, "t": "One question the ad didn’t answer", "l": "The primary care ad gets asked the role.", "o": "+10–15%", "ol": "CR to purchase"},
-      "ask-b": {"n": 3, "t": "What goes on your list?", "l": "Rx, OTC, herbs and supplements.", "o": "+10–15%", "ol": "CR to purchase"},
-      "value-a": {"n": 1, "t": "Their Quick Reference first", "l": "Four of your tools, picked for an NP.", "o": "+10–20%", "ol": "CR to purchase"},
-      "value-b": {"n": 1, "t": "A real check before the price", "l": "Your Interaction Check, hydrocodone and alprazolam.", "o": "+10–20%", "ol": "CR to purchase"},
-      "value-c": {"n": 1, "t": "Pill ID finds it first", "l": "AN 54, round, red: demeclocycline 150 mg.", "o": "+10–20%", "ol": "CR to purchase"},
-      "paywall-a": {"n": 2, "t": "The paywall names what they did", "l": "“Go beyond the basics” over their own tools.", "o": "+15–20%", "ol": "CR to purchase"},
-      "paywall-b": {"n": 5, "t": "The year against the month", "l": "$15.00 a month billed yearly, or $24.99 monthly.", "o": "+5–15%", "ol": "CR · ARPU +10–15%"},
-      "paywall-c": {"n": 4, "t": "Clinicians’ words where they decide", "l": "4.4 stars, 7.2K ratings, reviews about Pill ID.", "o": "+10–15%", "ol": "CR to purchase"},
-      "home": {"k": "Context", "t": "✕ goes straight into the app", "l": "No second paywall."}
+  "list": {
+   "rx": "Rx drugs",
+   "otc": "OTC drugs",
+   "herb": "herbs & supplements"
+  },
+  "ad": {
+   "a": "Meta ad",
+   "b": "“drug checker app”",
+   "c": "“pill id”"
+  }
+ },
+ "chips": {
+  "ad": "The ad",
+  "welcome": "Arrive",
+  "ask-a": "One question",
+  "ask-b": "One question",
+  "ask-c": "One question",
+  "value-a": "First win",
+  "value-b": "First win",
+  "value-c": "First win",
+  "paywall-a": "Paywall",
+  "paywall-b": "Paywall",
+  "paywall-c": "Paywall",
+  "home": "In the app"
+ },
+ "hero": [
+  "value-b",
+  "paywall-a",
+  "value-c"
+ ],
+ "outcome": {
+  "cr": "+20%",
+  "arpu": "+15%"
+ },
+ "ideas": [
+  {
+   "screen": "value-a",
+   "title": "Open on the tool they came for",
+   "what": "Today every install opens the same way, whatever the ad promised. Here each one opens on its tool before any price: their Quick Reference for the primary care ad, your Interaction Check for “drug checker app”, Pill ID for “pill id”.",
+   "impact": "+10–20%",
+   "il": "CR to purchase"
+  },
+  {
+   "screen": "paywall-a",
+   "title": "Name what they did on the paywall",
+   "what": "Today the epocrates+ offer reads the same for everyone. Here the headline picks up what they just did: “Go beyond the basics with epocrates+” over their own Quick Reference, “Check interactions, then go beyond the basics”, or “Pill ID found demeclocycline”.",
+   "impact": "+15–20%",
+   "il": "CR to purchase"
+  },
+  {
+   "screen": "ask-a",
+   "title": "Ask one thing the ad didn’t answer",
+   "what": "Today nothing after the install knows which ad they tapped. Here one question per source, and the next screen uses it: the role for the primary care ad, what goes on the list for “drug checker app”, what they can see on the pill for “pill id”.",
+   "impact": "+10–15%",
+   "il": "CR to purchase"
+  },
+  {
+   "screen": "paywall-c",
+   "title": "Put clinicians’ words by the button",
+   "what": "Today your 4.4 stars from 7.2K US ratings and clinicians’ reviews sit on the App Store page. Here they sit next to the plans: “my go to for quick medication information, dosing, interactions”.",
+   "impact": "+10–15%",
+   "il": "CR to purchase"
+  },
+  {
+   "screen": "paywall-b",
+   "title": "Show the annual saving",
+   "what": "Today your listing shows $179.99 a year and $24.99 a month, and the buyer works out the difference. Here the year reads $15.00 a month, 40% less than monthly and $119.89 less over a year ($299.88 against $179.99), first and preselected.",
+   "impact": "+5–15%",
+   "il": "CR · ARPU +10–15%"
+  }
+ ],
+ "panel": {
+  "ad": {
+   "idea": 0,
+   "t": "Where they came from",
+   "why": "Each phone opens where its install came from: your Meta ad, “Primary care multi-tool”, or your Apple Ads search ad for “drug checker app” or “pill id”."
+  },
+  "welcome": {
+   "idea": 0,
+   "t": "Welcome, in the ad’s words",
+   "why": "Your navy, your pattern and your “Start using epocrates” button, with a headline that repeats the ad or search they came from."
+  },
+  "ask-a": {
+   "idea": 3,
+   "t": "Ask the role, not the specialty",
+   "why": "<b>Try</b> one question, their role, <b>because</b> the ad already said primary care, and the role decides which of your tools they open first.",
+   "iv": "CR +10–15%",
+   "il": "to purchase",
+   "also": "On the flow from your Meta ad."
+  },
+  "ask-b": {
+   "idea": 3,
+   "t": "Ask what goes on the list",
+   "why": "<b>Try</b> asking whether the list holds Rx, OTC or herbs and supplements, <b>because</b> “drug checker app” already says the job, and the answer names the list on the next two screens.",
+   "iv": "CR +10–15%",
+   "il": "to purchase",
+   "also": "On the “drug checker app” flow."
+  },
+  "ask-c": {
+   "idea": 3,
+   "t": "Ask what they can see",
+   "why": "<b>Try</b> asking whether they see an imprint, a shape and color or can take a photo, <b>because</b> that is how Pill ID searches, so the answer sets up the very next screen.",
+   "iv": "CR +10–15%",
+   "il": "to purchase",
+   "also": "On the “pill id” flow."
+  },
+  "value-a": {
+   "idea": 1,
+   "t": "Their Quick Reference, set for their role",
+   "why": "<b>Try</b> opening on your home screen with four Reference tools picked for their role, <b>because</b> “Primary care multi-tool” promises tools, and seeing their own set keeps that promise before any price.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "On the flow from your Meta ad. The four tools per role are our pick; your usage data would set the real order."
+  },
+  "value-b": {
+   "idea": 1,
+   "t": "Run the check before the price",
+   "why": "<b>Try</b> your Interaction Check with hydrocodone, one tap to add alprazolam and your Additional Considerations, <b>because</b> someone who searched “drug checker app” should check drugs before anything else.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "On the “drug checker app” flow. The drugs and text are the ones on your App Store screenshot."
+  },
+  "value-c": {
+   "idea": 1,
+   "t": "Identify a pill before the price",
+   "why": "<b>Try</b> Pill ID with their answer leading the form and one tap to the result, <b>because</b> someone who searched “pill id” has a pill in hand, and finding it is the first value.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "On the “pill id” flow. The pill is the one on your App Store screenshot."
+  },
+  "paywall-a": {
+   "idea": 2,
+   "t": "A paywall over their own tools",
+   "why": "<b>Try</b> your ad’s own line, “Go beyond the basics with epocrates+”, over the Quick Reference they just set, <b>because</b> the price then reads as more of what they saw, for their role.",
+   "iv": "CR +15–20%",
+   "il": "to purchase",
+   "also": "Also on this screen: clinicians’ words (idea 4) and the annual saving (idea 5)."
+  },
+  "paywall-b": {
+   "idea": 5,
+   "t": "The year against the month",
+   "why": "<b>Try</b> $15.00 a month billed yearly beside $24.99 monthly, and a bar of $179.99 against $299.88, <b>because</b> today the annual saving has to be worked out by the buyer.",
+   "iv": "CR +5–15%",
+   "il": "to purchase · ARPU +10–15%",
+   "also": "Also on this screen: the headline names the check (idea 2) and a clinician review (idea 4)."
+  },
+  "paywall-c": {
+   "idea": 4,
+   "t": "Clinicians’ words first",
+   "why": "<b>Try</b> 4.4 stars from 7.2K ratings and three App Store reviews about Pill ID at the top, <b>because</b> someone who typed “pill id” is meeting epocrates for the first time.",
+   "iv": "CR +10–15%",
+   "il": "to purchase",
+   "also": "Also on this screen: “Pill ID found demeclocycline” (idea 2) and the annual saving (idea 5)."
+  },
+  "home": {
+   "idea": 0,
+   "t": "The ✕ closes into the app",
+   "why": "Closing the paywall lands on your Reference tab. No second paywall after the first."
+  }
+ },
+ "langs": [],
+ "i18n": {},
+ "prices": {},
+ "labelsI18n": {},
+ "liveUrl": "https://eddieatadapty.github.io/epocrates-flow-rebuild/",
+ "video": "assets/walkthrough.mp4",
+ "poster": "assets/walkthrough-poster.jpg",
+ "compare": null,
+ "tour": {
+  "introLede": "Three ads, three first launches. In your design, at your prices.",
+  "endTitle": "Three ads, three first launches of epocrates.",
+  "segments": [
+   {
+    "id": "ad",
+    "d": 3000,
+    "st": {
+     "ad": "a"
+    },
+    "tap": [
+     ".ep-inst",
+     2400
+    ]
+   },
+   {
+    "id": "welcome",
+    "d": 2200,
+    "tap": [
+     ".ep-btn",
+     1600
+    ]
+   },
+   {
+    "id": "ask-a",
+    "d": 2400,
+    "st": {
+     "role": "np"
+    },
+    "tap": [
+     "[data-pick=\"role:np\"]",
+     1700
+    ]
+   },
+   {
+    "id": "value-a",
+    "d": 2600,
+    "pop": ".ep-qr"
+   },
+   {
+    "id": "paywall-a",
+    "d": 2800
+   },
+   {
+    "id": "ad",
+    "d": 2000,
+    "st": {
+     "ad": "b"
+    },
+    "tap": [
+     ".ep-get",
+     1400
+    ]
+   },
+   {
+    "id": "ask-b",
+    "d": 2000,
+    "st": {
+     "list": [
+      "rx",
+      "herb"
+     ]
     }
+   },
+   {
+    "id": "value-b",
+    "d": 1600,
+    "st": {
+     "drugs": "1"
+    },
+    "tap": [
+     ".ep-add",
+     1100
+    ]
+   },
+   {
+    "id": "value-b",
+    "d": 2200,
+    "st": {
+     "drugs": "2"
+    },
+    "reveal": ".ep-cons"
+   },
+   {
+    "id": "paywall-b",
+    "d": 2600
+   },
+   {
+    "id": "ad",
+    "d": 1800,
+    "st": {
+     "ad": "c"
+    },
+    "tap": [
+     ".ep-get",
+     1200
+    ]
+   },
+   {
+    "id": "value-c",
+    "d": 1500,
+    "st": {
+     "see": "imprint",
+     "found": "0"
+    },
+    "tap": [
+     ".ep-pform .ep-btn",
+     1000
+    ]
+   },
+   {
+    "id": "value-c",
+    "d": 2000,
+    "st": {
+     "found": "1"
+    },
+    "pop": ".ep-pill"
+   },
+   {
+    "id": "paywall-c",
+    "d": 2600
+   },
+   {
+    "id": "home",
+    "d": 2600,
+    "end": true
+   }
+  ],
+  "captions": {
+   "ad": {
+    "k": "Three ads",
+    "t": "Each install opens where it came from",
+    "l": "Your Meta ad, or your search ad for “drug checker app” or “pill id”."
+   },
+   "welcome": {
+    "k": "Arrive",
+    "t": "The ad’s promise, in its own words",
+    "l": "Your navy, your pattern, your “Start using epocrates”."
+   },
+   "ask-a": {
+    "n": 3,
+    "t": "One question the ad didn’t answer",
+    "l": "The primary care ad gets asked the role.",
+    "o": "+10–15%",
+    "ol": "CR to purchase"
+   },
+   "ask-b": {
+    "n": 3,
+    "t": "What goes on your list?",
+    "l": "Rx, OTC, herbs and supplements.",
+    "o": "+10–15%",
+    "ol": "CR to purchase"
+   },
+   "value-a": {
+    "n": 1,
+    "t": "Their Quick Reference first",
+    "l": "Four of your tools, picked for an NP.",
+    "o": "+10–20%",
+    "ol": "CR to purchase"
+   },
+   "value-b": {
+    "n": 1,
+    "t": "A real check before the price",
+    "l": "Your Interaction Check, hydrocodone and alprazolam.",
+    "o": "+10–20%",
+    "ol": "CR to purchase"
+   },
+   "value-c": {
+    "n": 1,
+    "t": "Pill ID finds it first",
+    "l": "AN 54, round, red: demeclocycline 150 mg.",
+    "o": "+10–20%",
+    "ol": "CR to purchase"
+   },
+   "paywall-a": {
+    "n": 2,
+    "t": "The paywall names what they did",
+    "l": "“Go beyond the basics” over their own tools.",
+    "o": "+15–20%",
+    "ol": "CR to purchase"
+   },
+   "paywall-b": {
+    "n": 5,
+    "t": "The year against the month",
+    "l": "$15.00 a month billed yearly, or $24.99 monthly.",
+    "o": "+5–15%",
+    "ol": "CR · ARPU +10–15%"
+   },
+   "paywall-c": {
+    "n": 4,
+    "t": "Clinicians’ words where they decide",
+    "l": "4.4 stars, 7.2K ratings, reviews about Pill ID.",
+    "o": "+10–15%",
+    "ol": "CR to purchase"
+   },
+   "home": {
+    "k": "In the app",
+    "t": "The ✕ closes into the app",
+    "l": "Your Reference tab. No second paywall."
+   }
+  }
+ },
+ "grounding": "Impact ranges are Adapty’s expected effect from teardowns and A/B tests across 30,000+ subscription apps, not measured lift for epocrates. They overlap, so they don’t add up. The screens are proposals built from your listing; nothing here is a claim about clinical outcomes.",
+ "sources": [
+  {
+   "group": "Prices",
+   "items": [
+    {
+     "dt": "$179.99 a year · $24.99 a month",
+     "dd": "“epocrates+ Annual” and “epocrates+ Monthly” in the In-App Purchases list of the US App Store listing (apps.apple.com/us/app/id281935788), read 16 November 2026. $179.99 ÷ 12 = $15.00 a month; 12 × $24.99 = $299.88; $299.88 − $179.99 = $119.89, 40% less."
+    },
+    {
+     "dt": "Not used",
+     "dd": "Other SKUs in the same list: Epocrates Plus $21.99, Epocrates Plus Monthly $21.99, epocrates Plus $24.99, Essentials $179.99, Epocrates Plus $179.99, epocrates+ $179.99, Epocrates Plus Annual $179.99, epocrates Plus $224.99 (older or regional names). No SKU in the list is a free trial, so no version offers one."
+    }
+   ]
   },
-  "grounding": "Impact ranges are Adapty’s expected effect from teardowns and A/B tests across 30,000+ subscription apps, not measured lift for epocrates. They overlap, so they don’t add up. Nothing here is a claim about clinical outcomes.",
-  "sources": [
-    {"group": "Prices", "items": [
-      {"dt": "$179.99 a year · $24.99 a month", "dd": "“epocrates+ Annual” and “epocrates+ Monthly” in the In-App Purchases list of the US App Store listing (apps.apple.com/us/app/id281935788), read 16 November 2026. $179.99 ÷ 12 = $15.00 a month; 12 × $24.99 = $299.88; $299.88 − $179.99 = $119.89, 40% less."},
-      {"dt": "Not used", "dd": "Other SKUs in the same list: Epocrates Plus $21.99, Epocrates Plus Monthly $21.99, epocrates Plus $24.99, Essentials $179.99, Epocrates Plus $179.99, epocrates+ $179.99, Epocrates Plus Annual $179.99, epocrates Plus $224.99 (older or regional names). No SKU in the list is a free trial, so no version offers one."}
-    ]},
-    {"group": "Proof", "items": [
-      {"dt": "4.4 stars, 7.2K ratings", "dd": "US App Store listing, 4.43 from 7,226 ratings, 16 November 2026."},
-      {"dt": "Reviews", "dd": "Quoted verbatim from US App Store reviews of September 2026 (a family medicine physician, a psychiatric NP, and three on Pill ID and interactions)."},
-      {"dt": "“Join 1M+ Confident Clinicians”", "dd": "Headline of your own Meta ads (US Ad Library, running since 9 January 2026). Your listing says “trusted by over 2M prescribers”; we quote each as written."}
-    ]},
-    {"group": "Features and copy", "items": [
-      {"dt": "Your ads", "dd": "Meta Ad Library, US, active ads from the epocrates page, read 16 November 2026: 22 ads in 50 versions. The 3 install ads (“Primary care multi-tool”, since 13 November 2026, 12 versions) link to the App Store; the epocrates+ ads (“Go beyond the basics with epocrates+”, “Join 1M+ Confident Clinicians”) and the article ads link to epocrates.com."},
-      {"dt": "Apple Ads searches", "dd": "US search terms your search ad showed on, 16 October–16 November 2026, with share of voice and popularity; account-level, so it can’t tell your apps apart."},
-      {"dt": "Tools and copy", "dd": "Your US App Store listing and screenshots: “Make safer, faster clinical decisions – anywhere you practice.”, “Check drug-drug interactions”, “Identify a mystery pill by shape, color, imprint”, up to 30 medications at once, your Reference tab, Interaction Check and Pill ID screens."},
-      {"dt": "epocrates+ lines", "dd": "“Go beyond the basics with epocrates+. Premium, evidence based clinical guidance…” and “Subscribe for instant access to trusted clinical tools and up-to-date drug info.” are your own Meta ad texts. “Explore alternative medicines” carries the epocrates+ mark in your listing; disease content as part of the paid version comes from an App Store review."}
-    ]},
-    {"group": "Design", "items": [
-      {"dt": "Colours and type", "dd": "Navy #102038 and #06162d, teal #0193b2, link #0178a4, red #dd5546 and the #f5f6f9 ground, sampled off your App Store screenshots and Meta ad; Source Sans 3 for your site’s Source Sans Pro. Logo from cdn.epocrates.com; tool icons and the pill photo cut from your App Store screenshots."}
-    ]},
-    {"group": "What we couldn’t see", "items": [
-      {"dt": "Your live flow", "dd": "No recording exists in ScreensDesign or Atlas, and epocrates.com is closed outside the US, so we could not see your onboarding, your paywall or which tools sit behind epocrates+. Every onboarding and paywall screen here is a proposal in your design, built from your listing."}
-    ]}
-  ]
+  {
+   "group": "Proof",
+   "items": [
+    {
+     "dt": "4.4 stars, 7.2K ratings",
+     "dd": "US App Store listing, 4.43 from 7,226 ratings, 16 November 2026."
+    },
+    {
+     "dt": "Reviews",
+     "dd": "Quoted verbatim from US App Store reviews of September 2026 (a family medicine physician, a psychiatric NP, and three on Pill ID and interactions)."
+    },
+    {
+     "dt": "“Join 1M+ Confident Clinicians”",
+     "dd": "Headline of your own Meta ads (US Ad Library, running since 9 January 2026). Your listing says “trusted by over 2M prescribers”; we quote each as written."
+    }
+   ]
+  },
+  {
+   "group": "Features and copy",
+   "items": [
+    {
+     "dt": "Your ads",
+     "dd": "Meta Ad Library, US, active ads from the epocrates page, read 16 November 2026: 22 ads in 50 versions. The 3 install ads (“Primary care multi-tool”, since 13 November 2026, 12 versions) link to the App Store; the epocrates+ ads (“Go beyond the basics with epocrates+”, “Join 1M+ Confident Clinicians”) and the article ads link to epocrates.com."
+    },
+    {
+     "dt": "Apple Ads searches",
+     "dd": "US search terms your search ad showed on, 16 October–16 November 2026, with share of voice and popularity; account-level, so it can’t tell your apps apart."
+    },
+    {
+     "dt": "Tools and copy",
+     "dd": "Your US App Store listing and screenshots: “Make safer, faster clinical decisions – anywhere you practice.”, “Check drug-drug interactions”, “Identify a mystery pill by shape, color, imprint”, up to 30 medications at once, your Reference tab, Interaction Check and Pill ID screens."
+    },
+    {
+     "dt": "epocrates+ lines",
+     "dd": "“Go beyond the basics with epocrates+. Premium, evidence based clinical guidance…” and “Subscribe for instant access to trusted clinical tools and up-to-date drug info.” are your own Meta ad texts. “Explore alternative medicines” carries the epocrates+ mark in your listing; disease content as part of the paid version comes from an App Store review."
+    }
+   ]
+  },
+  {
+   "group": "Design",
+   "items": [
+    {
+     "dt": "Colours and type",
+     "dd": "Navy #102038 and #06162d, teal #0193b2, link #0178a4, red #dd5546 and the #f5f6f9 ground, sampled off your App Store screenshots and Meta ad; Source Sans 3 for your site’s Source Sans Pro. Logo from cdn.epocrates.com; tool icons and the pill photo cut from your App Store screenshots."
+    }
+   ]
+  },
+  {
+   "group": "Languages",
+   "items": [
+    {
+     "dt": "English only",
+     "dd": "Your app is listed in English only and on the US App Store only (no UK, Canada, Mexico or Spain storefront), and the epocrates team we know of in Atlas sits in Boston and New York. A Spanish version would add a language your app doesn’t ship in, so the phones stay in English."
+    }
+   ]
+  },
+  {
+   "group": "What we couldn’t see",
+   "items": [
+    {
+     "dt": "Your live flow",
+     "dd": "No recording exists in ScreensDesign or Atlas, and epocrates.com is closed outside the US, so we could not see your onboarding, your paywall or which tools sit behind epocrates+. Every onboarding and paywall screen here is a proposal in your design, built from your listing."
+    }
+   ]
+  }
+ ]
 }
 </script>
 
@@ -1903,7 +2291,7 @@ function tourInit(){
       cap.innerHTML = r ? '<span class="au-duo-k">' + label(id) + '</span>' + r[f.k]
                         : '<span class="au-duo-k">' + label(id) + '</span>' + (shared || 'Same screen for every ad.');
     });
-    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = shared && id === 'today' ? shared : '';
+    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = (D.stepLine && D.stepLine[id]) || (shared && id === 'today' ? shared : '');
   }
   function both(id, n, only){
     var st = STEPS.find(function(s){ return s.id === id; }) || stepFor(id);
@@ -2014,6 +2402,15 @@ function tourInit(){
   var app = C.app || J.app || '', demo = J.demo || 'https://adapty.io/schedule-demo/';
   var icon = J.icon || (M.hero && M.hero.icon) || '';
   var root = document.createElement('div'); root.className = 'jn-root';
+  /* channel colours, as the Atlas "Ad to Pro" pages use them: one hue per channel, a darker / lighter shade when two
+     phones come from the same channel. J.channels = {a:'#hex'} overrides. */
+  var CH = {youtube: '#FF0033', apple: '#7346E0', meta: '#0866FF', tiktok: '#FE2C55', google: '#1A73E8', web: '#3D3C3A'};
+  function chanKey(s){ s = String(s || '').toLowerCase(); return /youtube/.test(s) ? 'youtube' : /apple|search|asa|app store/.test(s) ? 'apple' : /tiktok/.test(s) ? 'tiktok' : /google|admob/.test(s) ? 'google' : /web|site/.test(s) && !/meta|facebook|instagram/.test(s) ? 'web' : 'meta'; }
+  function shade(hex, n){ if (!n) return hex; var c = hex.replace('#', '').match(/../g).map(function(x){ return parseInt(x, 16); }), t = n === 1 ? 0 : 255, k = n === 1 ? .3 : .32;
+    return '#' + c.map(function(v){ return ('0' + Math.round(v + (t - v) * k).toString(16)).slice(-2); }).join(''); }
+  var COL = {}, seen = {};
+  (D.flows || []).forEach(function(f){ var ck = chanKey(f.chan); seen[ck] = seen[ck] === undefined ? 0 : seen[ck] + 1; COL[f.k] = (J.channels && J.channels[f.k]) || shade(CH[ck], seen[ck]); });
+  function colFor(a){ if (a.c) return a.c; if (a.flow && COL[a.flow]) return COL[a.flow]; return CH[chanKey(a.chan || a.kind)]; }
 
   /* nav: their mark, "Growth audit · by Adapty", the two views, Book a demo */
   var L = J.logo || {}, logo;
@@ -2049,8 +2446,7 @@ function tourInit(){
   /* 4 your ads: one tab per promise, the ad itself playing, its frames, then what it promises and where it lands */
   var A = J.ads || {tabs: []};
   var ads = '<section class="jn-sec" id="jnAds"><div class="jn-wrap"><p class="jn-kick">' + (A.kick || 'Your ads') + '</p><h2 class="jn-h2">' + halves(A.h2, 'b') + '</h2>' +
-    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adtabs" id="jnAdTabs"></div><div class="jn-lib"><div class="jn-media" id="jnMedia"><div class="jn-vid" id="jnAdMedia"></div><div class="jn-strip" id="jnAdStrip"></div></div>' +
-    '<div class="jn-adb" id="jnAdB"></div></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
+    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adlist" id="jnAdList"></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
     '<p class="jn-foot-l">' + (A.foot || 'Adapty can pick the first screen of the flow from the campaign the install came from, through the attribution you already run. A new promise gets its own first screen the same day, with no app release.') + '</p></div></section>';
 
   /* 5 the five ideas */
@@ -2064,9 +2460,11 @@ function tourInit(){
   /* 6 potential outcome: a dark card in their world + three do-cards (Day 1 / Week 1 / Week 2 from the ads config) */
   var O = J.outcome || {}, co = C.outcome || {};
   var nums = O.nums || [co.cr && [co.cr, O.crl || 'CR to purchase'], co.arpu && [co.arpu, O.arpul || 'ARPU']].filter(Boolean);
-  var dos = O.do || $$('#duo .au-duo-next > div').map(function(x){ return [$('b', x).innerHTML, $('h4', x).innerHTML, $('p', x).innerHTML]; });
-  var outc = '<section class="jn-sec"><div class="jn-wrap"><p class="jn-kick">Potential outcome</p><h2 class="jn-h2">' + halves(O.h2 || ['Five ideas,', 'three versions of one app.'], 'b') + '</h2>' +
-    '<div class="jn-outc"><div class="jn-osh"><div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div><div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
+  var oimg = O.img === false ? '' : (O.img || (C.hero && C.hero[1] ? 'assets/hero/' + C.hero[1] + '.png' : ''));
+  var DOK = ['Do this week', 'Then', 'And measure'];
+  var dos = O.do || $$('#duo .au-duo-next > div').map(function(x, k){ return [DOK[k] || $('b', x).innerHTML, $('h4', x).innerHTML, $('p', x).innerHTML]; });
+  var outc = '<section class="jn-sec"><div class="jn-wrap"><p class="jn-kick">Potential outcome</p><h2 class="jn-h2">' + halves(O.h2 || ['Five ideas,', 'one first launch per ad.'], 'b') + '</h2>' +
+    '<div class="jn-outc"><div class="jn-osh' + (oimg ? ' jn-world' : '') + '">' + (oimg ? '<img class="jn-oimg" src="' + oimg + '" alt="">' : '<div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div>') + '<div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
     '<div class="jn-nums">' + nums.map(function(n){ return '<div><b>' + n[0] + '</b><span>' + n[1] + '</span></div>'; }).join('') + '</div>' +
     '<p class="cap">' + (O.cap || 'Our estimate if the five run together. They overlap, so they don’t add up; each one is its own A/B test against today’s flow.') + '</p></div>' +
     '<div class="jn-do">' + dos.map(function(x){ return '<div><small>' + x[0] + '</small><h4>' + x[1] + '</h4><p>' + x[2] + '</p></div>'; }).join('') + '</div></div>' +
@@ -2083,7 +2481,7 @@ function tourInit(){
   var langs = (C.langs || []).length > 1 ? '<div class="jn-seg" id="jnLang" role="group" aria-label="Language">' + C.langs.map(function(l){ return '<button type="button" data-l="' + l.code + '">' + l.name + '</button>'; }).join('') + '</div>' : '';
   var proto = '<main class="jn-view" id="jnProto"><section class="jn-ph"><div class="jn-wrap"><p class="jn-kick">' + (P.kick || 'Prototype · one first launch per ad') + '</p>' +
     '<h1 class="jn-h1p">' + halves(P.h1 || ['Three ads.', 'Three first launches.'], 'b') + '</h1><p class="jn-p">' + (P.sub || '') + '</p>' +
-    (langs ? '<div class="jn-tool">' + langs + '</div>' : '') + '</div><div id="jnDuoSlot"></div>' +
+    (langs ? '<div class="jn-tool">' + langs + '</div><p class="jn-langnote" id="jnLangNote"></p>' : '') + '</div><div id="jnDuoSlot"></div>' +
     '<div class="jn-wrap"><div class="jn-qr"><div class="jn-qg" aria-hidden="true">' + tiles(48, false) + '</div><img src="assets/qr-app.png" alt="QR code that opens the prototype on a phone"><div class="t"><h4>' + (qr.t || 'Try it on your phone') + '</h4><p>' + (qr.p || 'Scan to open the prototype full screen, the way a new user would see it. Every screen here can be built in Adapty Flow Builder and tested against today’s.') + '</p></div>' +
     '<a class="jn-pill g jn-full" href="?app">Open it full screen</a><a class="jn-pill w" href="' + demo + '" target="_blank" rel="noopener">Book a demo</a></div>' +
     '<p class="jn-protofoot">' + (C.grounding || '') + '</p></div></section></main>';
@@ -2100,7 +2498,11 @@ function tourInit(){
     cards.innerHTML = I.map(function(d, i){ return '<button type="button" class="jn-icard" data-duoidea="' + (i + 1) + '" data-scr="' + d.screen + '"><small>Idea ' + (i + 1) + ' of ' + I.length + '</small><h4>' + d.title + '</h4><p>' + d.what + '</p>' +
       '<div class="jn-rowf">' + chip(d) + '<span class="jn-see">See it on the phones →</span></div>' + (kept[i] ? '<div class="kept">' + kept[i] + '</div>' : '') + '</button>'; }).join('');
     duo.appendChild(cards);
-    (D.flows || []).forEach(function(f){ var p = $('#duo .au-duo-' + f.k + ' .au-duo-pill'); if (p && /apple|search/i.test(f.chan || '')) p.classList.add('asa'); });
+    (D.flows || []).forEach(function(f){ $$('#duo .au-duo-' + f.k).forEach(function(x){ x.style.setProperty('--au-ring', COL[f.k]); }); });
+    /* number the steps the way Atlas does ("1 · The ad"), once trio.js has drawn them */
+    var stp = $('#duoSteps');
+    function numberSteps(){ var n = 0; $$('#duoSteps button[data-id]').forEach(function(b){ if (b.classList.contains('au-today')) return; n++; if (!b.querySelector('.jn-n')) b.insertAdjacentHTML('afterbegin', '<span class="jn-n">' + n + ' · </span>'); }); }
+    if (stp) { numberSteps(); new MutationObserver(numberSteps).observe(stp, {childList: true}); }
   }
 
   /* views */
@@ -2126,7 +2528,6 @@ function tourInit(){
     var o = e.target.closest('[data-open]'); if (o) { show(o.dataset.open); return; }
     var r = e.target.closest('[data-jnidea]'); if (r) { var n = r.dataset.jnidea; show('proto'); ready(function(){ var c = $('.jn-icard[data-duoidea="' + n + '"]'); if (c) c.click(); }); return; }
     var g = e.target.closest('[data-jngo]'); if (g) { var k = g.dataset.jngo; show('proto'); ready(function(){ var b = document.createElement('button'); b.hidden = true; b.dataset.duogo = k; duo.appendChild(b); b.click(); b.remove(); setTimeout(stage, 450); }); return; }
-    var a = e.target.closest('[data-jnad]'); if (a) { drawAd(+a.dataset.jnad); return; }
     var l = e.target.closest('#jnLang [data-l]'); if (l && window.setLang) { setLang(l.dataset.l); paintLang(); }
   });
   /* idea cards scroll the phones into view */
@@ -2136,51 +2537,55 @@ function tourInit(){
     if (!e.target.closest('[data-jnwalk]')) return;
     show('proto'); ready(function(){ var b = $('#walkBtn'); if (b && !b.classList.contains('on')) b.click(); });
   });
-  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); }); }
+  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); });
+    var ln = $('#jnLangNote'); if (ln) { var t = (J.langNote || {})[cur] || ''; ln.innerHTML = t; ln.style.display = t ? '' : 'none'; } }
   paintLang();
 
-  /* the ads card */
-  var tok = 0;
-  function drawAd(i){
-    var T = A.tabs || []; if (!T.length) return; var a = T[i] || T[0], my = ++tok;
-    $('#jnAdTabs').innerHTML = T.map(function(x, k){ return '<button type="button" data-jnad="' + k + '"' + (k === i ? ' class="on"' : '') + '>' + x.tab + (x.n ? ' · ' + x.n + ' ' + (x.unit || (x.n > 1 ? 'ads' : 'ad')) : '') + '</button>'; }).join('');
-    var kind = a.kind || 'video', tag = '<span class="jn-tag' + (kind === 'search' ? ' asa' : kind === 'image' ? ' img' : '') + '">' + (a.chan || 'Meta · running now') + '</span>', m;
-    if (kind === 'video') m = tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
-    else if (kind === 'image') m = tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
-    else if (kind === 'post') m = tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
+  /* the ads: one card per ad, each playing (video), animating (search) or showing as the feed does (post) */
+  function adMedia(a){
+    var kind = a.kind || 'video', tag = '<span class="jn-tag">' + (a.chan || 'Meta · running now') + '</span>';
+    if (kind === 'video') return tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
+    if (kind === 'image') return tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
+    if (kind === 'post') return tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
       '<p class="jn-post-t">' + (a.text || '') + '</p><div class="jn-post-m"><img src="' + a.src + '" alt="The ad"></div>' +
       '<div class="jn-post-l"><div><small>' + (a.domain || '') + '</small><b>' + (a.headline || '') + '</b></div><span>' + (a.cta || 'Learn more') + '</span></div></div>';
-    else { var S2 = J.asa || {};
-      m = tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
-        '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('') + '</div></div>'; }
-    var box = $('#jnAdMedia'), media = $('#jnMedia');
-    box.innerHTML = m; box.classList.toggle('asa', kind === 'search'); media.style.removeProperty('--ar');
-    function fitAr(w, h){ if (w && h && my === tok) media.style.setProperty('--ar', w + '/' + h); }
-    var v = $('#jnAdMedia video');
-    if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-    var im = kind === 'image' && $('#jnAdMedia > img');
-    if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
-    $('#jnAdStrip').innerHTML = (a.frames || []).slice(0, 4).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('');
-    $('#jnAdStrip').style.display = (a.frames || []).length ? '' : 'none';
-    $('#jnAdB').innerHTML = '<div class="hook">' + a.hook + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
-      '<dl><dt>In the ad</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
-      (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
-      '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div>';
-    if (kind === 'search') typeTerm(a.term || a.tab.replace(/[“”"]/g, ''), my);
+    var S2 = J.asa || {};
+    return tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
+      '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div></div>';
   }
-  function typeTerm(term, my){
-    var q = $('#jnAdMedia .jn-asa-q'), box = $('#jnAdMedia .jn-asa'); if (!q) return;
-    var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (RM) { q.textContent = term; box.classList.add('show'); return; }
+  function drawAds(){
+    var T = A.tabs || [], list = $('#jnAdList'); if (!T.length || !list) return;
+    list.innerHTML = T.map(function(a, i){
+      var kind = a.kind || 'video', tall = kind === 'search' || kind === 'post' || a.tall;
+      return '<article class="jn-card' + (tall ? ' tall' : '') + '" data-card="' + i + '" style="--c:' + colFor(a) + '"><div class="jn-media"><div class="jn-vid' + (kind === 'search' ? ' asa' : '') + '">' + adMedia(a) + '</div>' +
+        ((a.frames || []).length ? '<div class="jn-strip">' + a.frames.slice(0, 4).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div>' : '') + '</div>' +
+        '<div class="jn-adb"><div class="hook">' + a.hook + (a.sub ? ' <small>' + a.sub + '</small>' : '') + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
+        '<dl><dt>' + (kind === 'search' ? 'In the search' : 'In the ad') + '</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
+        (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
+        '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div></div></article>';
+    }).join('');
+    T.forEach(function(a, i){
+      var card = $('.jn-card[data-card="' + i + '"]', list), media = $('.jn-media', card);
+      function fitAr(w, h){ if (!w || !h) return; media.style.setProperty('--ar', w + '/' + h); card.classList.toggle('tall', h > w * 1.05 || a.kind === 'search' || a.kind === 'post' || !!a.tall); }
+      var v = $('video', card);
+      if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      var im = a.kind === 'image' && $('.jn-vid > img', card);
+      if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
+      if (a.kind === 'search') typeTerm(card, a.term || String(a.tab || '').replace(/[“”"]/g, ''), i * 1400);
+    });
+  }
+  function typeTerm(card, term, delay){
+    var q = $('.jn-asa-q', card), box = $('.jn-asa', card); if (!q) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { q.textContent = term; box.classList.add('show'); return; }
     var i = 0;
-    (function f(){
-      if (my !== tok) return;
+    function f(){
       if (i <= term.length) { q.textContent = term.slice(0, i++); setTimeout(f, 95); return; }
-      setTimeout(function(){ if (my !== tok) return; box.classList.add('show');
-        setTimeout(function(){ if (my !== tok) return; box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
-    })();
+      setTimeout(function(){ box.classList.add('show');
+        setTimeout(function(){ box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
+    }
+    setTimeout(f, delay || 0);
   }
-  drawAd(0);
+  drawAds();
   if (/[?&]view=proto\b/.test(Q) || /[?&]step=\w/.test(Q)) show('proto');
 })();
 /* JUNO:END */
@@ -2230,7 +2635,7 @@ function tourInit(){
   /* live walkthrough inside the three ad phones */
   var stage = document.getElementById('duoStage'), data = document.getElementById('duoData'); if (!stage || !data) return;
   var D = JSON.parse(data.textContent), F = D.flows, W = M.walk || {}, walk = {on: false, tok: 0};
-  var LABEL = W.button || '▶ Play the walkthrough in the phones';
+  var LABEL = W.button || '▶ 30-second walkthrough';
   var bar = document.createElement('div'); bar.className = 'au-walk';
   bar.innerHTML = '<button type="button" id="walkBtn">' + LABEL + '</button><div class="au-walkbar" id="walkBar"><span id="walkTx"></span><i><b id="walkPr"></b></i></div>';
   var head = $('#duo .au-duo-h'); head.parentNode.insertBefore(bar, head.nextSibling);
@@ -2276,7 +2681,7 @@ function tourInit(){
       for (var k = 0; k < n; k++) {
         var s = steps[k], btn = $('#duoSteps button[data-id="' + s.id + '"]'); if (btn) btn.click();
         cap((W.captions || {})[s.id] || ('<b>' + (btn ? btn.textContent : s.id) + '.</b> ' + (rows[s.id] ? 'Each ad gets its own version of this screen.' : (plain((D.stepCaps || {})[s.id]) || 'Same screen for every ad.'))), Math.round((k + 1) / (n + 1) * 100));
-        await wait(k ? 1500 : 2200, tk);
+        await wait(k ? (W.dwell || 3000) : (W.first || 3600), tk);
         if (k === n - 1) break;
         /* each phone taps through its own screen: an answer first if nothing is picked, then its button */
         for (var pass = 0; pass < 2; pass++) {
@@ -2287,7 +2692,7 @@ function tourInit(){
         }
         $$('.au-finger').forEach(function(f){ f.classList.toggle('on', false); });
       }
-      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(2600, tk);
+      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(W.endMs || 3200, tk);
     } catch (e) {}
     stop();
   }
@@ -2298,7 +2703,7 @@ function tourInit(){
 })();
 /* MOTION:END */
 </script>
-<script type="application/json" id="motionData">{"hero": {"words": ["Primary care multi-tool", "Make informed decisions faster", "drug checker app", "pill id", "Interaction Check", "Pill ID", "Quick Reference", "Herbs & Supplements", "Calculators", "Go beyond the basics"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.4", "from 7.2K ratings on the US App Store"], ["22", "live epocrates ads in the US Meta Ad Library; 3 link to the App Store"], ["30", "US search terms your Apple Ads show on, 16 Oct–16 Nov 2026"], ["1", "first launch every install meets today, whatever it came from"]]}, "walk": {"captions": {"ad": "<b>Where they came from.</b> Your Meta ad “Primary care multi-tool”, and your search ad on “drug checker app” and on “pill id”.", "welcome": "<b>Welcome.</b> Your navy and your “Start using epocrates”, under the headline of the ad or search they came from.", "ask": "<b>One question</b> the ad didn’t answer: the role, what goes on the list, what they can see on the pill.", "value": "<b>First value, before any price.</b> Their Quick Reference, your Interaction Check, Pill ID finding demeclocycline.", "paywall": "<b>Three paywalls.</b> Over their own tools · the year against the month · clinicians’ words first. Same $179.99 and $24.99.", "home": "<b>✕ goes straight into the app.</b> No second paywall."}, "taps": {"value-b": [".ep-add", ".ep-foot .ep-btn"], "value-c": [".ep-pform .ep-btn", ".ep-foot .ep-btn"]}, "end": "That’s the three versions. Tap any phone, or a recommendation under it.", "button": "▶ Play the walkthrough in the phones"}, "heroWalk": "▶ Watch it play in the phones"}</script>
-<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "demo": "https://adapty.io/schedule-demo/", "logo": {"src": "assets/brand/logo.svg", "mask": true, "ar": 4.39, "h": 26}, "hero": {"h1": ["Three ads, three different tools.", "All open the same app."], "lead": "Your Meta ad says “Primary care multi-tool”. Your search ad shows on “drug checker app” and “pill id”. Here each one opens on the tool it promised, Quick Reference, Interaction Check or Pill ID, before epocrates+ at your own prices.", "byline": "Built from your US App Store listing, in-app purchases and reviews, the epocrates ads in the US Meta Ad Library, and your US Apple Ads search terms, 16 Oct–16 Nov 2026. No recording of your flow exists, so every onboarding and paywall screen is a proposal in your design.", "open": "Open the three versions", "tiles": ["#102038", "#0193b2", "#dd5546", "#0178a4", "#59b8d9", "#06162d", "#959daa"], "words": ["Primary care multi-tool", "drug checker app", "pill id", "Interaction Check", "Pill ID", "Quick Reference", "Drugs", "Herbs & Supplements", "Calculators", "Diseases", "Labs", "Formularies"]}, "stats": [["★ 4.4", "from 7.2K ratings on the US App Store"], ["22", "live epocrates ads in the US Meta Ad Library; 3 link to the App Store"], ["30", "US search terms your Apple Ads show on, 16 Oct–16 Nov 2026"], ["1", "first launch every install meets today, whatever it came from"]], "what": {"h2": ["We read epocrates on the App Store, in Meta and in Apple Ads,", "then rebuilt the first screens around three sources."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For epocrates we looked at the gap between what an ad or a search promises and the first thing the app shows.", "launchTitle": "A new user’s first launch today, as far as we can see it", "launch": [["Taps your Meta ad, or your search ad on “drug checker app” or “pill id”.", "Kept."], ["Installs from your listing: “The #1 medical reference app.”", "Kept."], ["Opens one first launch for everyone, whatever the ad promised.", "Now one version per source."], ["Meets epocrates+ at $179.99 a year or $24.99 a month; reviewers say free views run out.", "Kept, with the saving shown."]], "notes": [["Your design, not ours", "Your #102038 navy and #0193b2 teal, your “Start using epocrates” button, your Reference icons and your Interaction Check and Pill ID screens, as your App Store screenshots show them. Only the order and the first question change."], ["Your prices, as published", "$179.99 a year and $24.99 a month, the epocrates+ Annual and Monthly prices in your US App Store listing. No trial, because none is listed; no invented discount, no timer."], ["We couldn’t see your live flow", "No recording of your onboarding exists, and epocrates.com is closed outside the US, so the onboarding and paywall screens are proposals built from your listing. Send a recording and we will rebuild against your real screens."]]}, "asa": {"name": "epocrates: Drug Info & Pill ID", "sub": "Dosing, Interactions, & Labs", "icon": "assets/brand/appstore-icon.jpg", "shots": ["assets/brand/appstore-shot-1.jpg", "assets/brand/appstore-shot-5.jpg", "assets/brand/appstore-shot-4.jpg"]}, "ads": {"kick": "Your ads", "h2": ["One Meta ad and two searches,", "one first launch for all of them."], "p": "Your newest Meta ads, running since 13 November 2026, are the only ones that send people to the App Store. Your Apple Ads search ad shows on 30 US terms; two of the biggest are a drug check and a pill to identify. Each source below gets its own version of the app in the prototype.", "tabs": [{"tab": "Meta · “Primary care multi-tool”", "n": 12, "unit": "versions", "kind": "post", "chan": "Meta · running since 13 Nov 2026", "page": "epocrates", "text": "epocrates offers primary care prescription support when you need it most.", "headline": "Primary care multi-tool", "domain": "APPS.APPLE.COM", "cta": "Install now", "src": "assets/ads/meta-install-2-feed.jpg", "hook": "“Make informed decisions faster”", "meta": "Meta · 3 live ads in 12 versions, white, navy and teal · since 13 Nov 2026 · links to the App Store", "inad": "Your home screen on a phone in hand, “Make informed decisions faster” and a “Start using epocrates” button; the copy says primary care prescription support.", "promise": "One multi-tool for a primary care prescriber.", "today": "The same first launch as every other install.", "rebuild": "Version A asks only “What’s your role?”, opens their Quick Reference with four of your Reference tools for that role, then a paywall over those tools: “Go beyond the basics with epocrates+”.", "flow": "a"}, {"tab": "“drug checker app”", "term": "drug checker app", "n": 4, "unit": "search terms", "kind": "search", "chan": "Apple Ads · search ad", "hook": "“drug checker app”", "meta": "Apple Ads · 61% share of voice, popularity 3.77 · also “contraindications” (35%), “drug search” (28%), “drug” (9%) · US, 16 Oct–16 Nov 2026, account-level", "inad": "Your search ad: your icon, “epocrates: Drug Info & Pill ID”, “Dosing, Interactions, & Labs” and your first screenshots.", "promise": "Check these drugs together, now.", "today": "The same first launch as every other install.", "rebuild": "Version B asks what goes on the list, opens your Interaction Check with hydrocodone and one tap to add alprazolam, then a paywall that sets $15.00 a month billed yearly beside $24.99 monthly.", "flow": "b"}, {"tab": "“pill id”", "term": "pill id", "n": 2, "unit": "search terms", "kind": "search", "chan": "Apple Ads · search ad", "hook": "“pill id”", "meta": "Apple Ads · 20% share of voice, popularity 2.45 · also “pill identifier + drug search” (9%) · US, 16 Oct–16 Nov 2026, account-level", "inad": "The same search ad, shown to someone with a pill in hand.", "promise": "Tell me what this pill is.", "today": "The same first launch as every other install.", "rebuild": "Version C asks what they can see on the pill, runs Pill ID to demeclocycline 150 mg, then a paywall that opens on 4.4 stars and three App Store reviews about Pill ID.", "flow": "c"}], "more": "No phone of their own: your epocrates+ ads (“Go beyond the basics with epocrates+”, offering $149.95 for the first year; “Join 1M+ Confident Clinicians”) and your article ads all link to epocrates.com, 19 of your 22 live ads, so the app never sees that offer. On your own name you show on 79% of searches for “epocrates: drug checker app” but only 2% for “epocrates”, worth defending. Counts are ad versions and search terms, not spend or installs.", "foot": "Adapty can pick the first screen of the flow from the Meta campaign or the Apple Ads keyword the install came from: after a one-time SDK setup, it arrives with the install. A new source gets its own first screen the same day, with no app release."}, "ideasH2": ["Ranked by what we would", "test first."], "outcome": {"h2": ["Five ideas,", "one app that knows where they came from."], "k": "Run together", "t": "Three sources, three first launches, each opening on the tool it promised", "do": [["Day 1", "Pass the campaign and keyword into Adapty", "After a one-time SDK setup, the Meta campaign or Apple Ads keyword of each install arrives as a user attribute and picks the flow at first open. No app release."], ["Week 1", "One version per source", "The primary care ad, the drug-check searches and the pill searches each get their own first screens; searches for your own name keep the default flow."], ["Week 2", "Judge each source on what it earns", "Each version against today’s first launch, measured on paid subscriptions and what each install from that source earns, so spend follows the sources that pay."]]}, "proto": {"kick": "Prototype · one version per source", "h1": ["One Meta ad, two searches.", "Three first launches."], "sub": "One install from each: your “Primary care multi-tool” ad, a search for “drug checker app” and a search for “pill id”. Same app, same prices. Tap the steps, or tap inside any phone."}, "kept": ["Kept: your Interaction Check, Pill ID and Reference screens, as your listing shows them.", "Kept: “Go beyond the basics with epocrates+”, your own ad line.", "Kept: the audiences your listing names: MD/DO, NP, PA, pharmacist, student.", "Kept: your 4.4 stars and your reviews, word for word.", "Kept: $179.99 a year and $24.99 a month, as listed."], "_tiles": ["#525a67", "#499cac", "#c7796f", "#498da4", "#7cb1c3", "#4c5560", "#9ea2a8"]}</script>
+<script type="application/json" id="motionData">{"hero": {"words": ["Primary care multi-tool", "Make informed decisions faster", "drug checker app", "pill id", "Interaction Check", "Pill ID", "Quick Reference", "Herbs & Supplements", "Calculators", "Go beyond the basics"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.4", "from 7.2K ratings on the US App Store"], ["61%", "share of voice on your Apple Ads search “drug checker app”, in the US"], ["3", "promises with a first launch of their own: your Meta ad, “drug checker app”, “pill id”"], ["1", "first launch every install meets today, whatever the ad"]]}, "walk": {"captions": {"ad": "Three installs: your Meta ad, “drug checker app”, “pill id”.", "welcome": "Each first screen keeps its ad’s promise, in its own words.", "ask": "One question, a different one per source.", "value": "The tool before any price: their Quick Reference, a check, a pill found.", "paywall": "Each paywall names what they just did. Same $179.99 and $24.99.", "home": "The ✕ closes into your Reference tab. No second paywall."}, "taps": {"value-b": [".ep-add", ".ep-foot .ep-btn"], "value-c": [".ep-pform .ep-btn", ".ep-foot .ep-btn"]}, "end": "Three first launches, your design, your prices.", "button": "▶ 30-second walkthrough", "first": 4000, "dwell": 3400, "endMs": 3600}, "heroWalk": "▶ Watch it play in the phones"}</script>
+<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "demo": "https://adapty.io/schedule-demo/", "logo": {"src": "assets/brand/logo.svg", "mask": true, "ar": 4.39, "h": 26}, "hero": {"h1": ["Two channels, three promises.", "One first launch answers all of them."], "lead": "Your Meta ad says “Primary care multi-tool”. Your Apple Ads answer “drug checker app” and “pill id”. Three different jobs, and every install opens the same app. Here each one opens on the tool it promised, in your design, at your prices.", "byline": "Built from your US App Store listing and reviews, your Meta ads and the Apple Ads searches you show on in the US, November 2026. We have no recording of your flow, so every onboarding and paywall screen here is a proposal.", "open": "Open the three flows", "tiles": ["#102038", "#0193b2", "#dd5546", "#0178a4", "#59b8d9", "#06162d", "#959daa"], "words": ["Primary care multi-tool", "drug checker app", "pill id", "Interaction Check", "Pill ID", "Quick Reference", "Drugs", "Herbs & Supplements", "Calculators", "Diseases", "Labs", "Formularies"]}, "stats": [["★ 4.4", "from 7.2K ratings on the US App Store"], ["61%", "share of voice on your Apple Ads search “drug checker app”, in the US"], ["3", "promises with a first launch of their own: your Meta ad, “drug checker app”, “pill id”"], ["1", "first launch every install meets today, whatever the ad"]], "what": {"h2": ["We read your ads and your searches the way a new user meets them,", "then rebuilt what happens after the tap."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For epocrates we looked at the gap between what each ad promises and the first thing the app shows.", "launchTitle": "Your first launch today, as far as we can see it", "launch": [["Your Meta ad or your search ad, then your listing: “The #1 medical reference app.”", "Kept."], ["One first launch for every install, whatever the ad or search promised.", "Now one per source."], ["epocrates+ at $179.99 a year or $24.99 a month, no free trial listed. Reviewers say the free views run out.", "Kept, with the saving shown."], ["Your Reference tab: Drugs, Interaction Check, Pill ID, Calculators and more.", "Kept, with the tool they came for already open."]], "notes": [["Your design, not ours", "Your #102038 navy and #0193b2 teal, your “Start using epocrates” button, your Reference icons and your Interaction Check and Pill ID screens, as your App Store screenshots show them. Only the order of the screens and the words at their top change."], ["Your prices, as published", "$179.99 a year and $24.99 a month, the epocrates+ Annual and Monthly prices in your US App Store listing. $179.99 ÷ 12 = $15.00 a month; $24.99 × 12 = $299.88, so the year is 40% less. No trial, because none is listed; no invented discount, no timer."], ["We couldn’t see your live flow", "No recording of your onboarding exists and epocrates.com is closed outside the US, so the onboarding and paywall screens are proposals built from your listing. We can’t see your test history either: send a recording and what you have tried, and we will rebuild against your real screens."]]}, "asa": {"name": "epocrates: Drug Info & Pill ID", "sub": "Dosing, Interactions, & Labs", "icon": "assets/brand/appstore-icon.jpg", "shots": ["assets/brand/appstore-shot-1.jpg", "assets/brand/appstore-shot-5.jpg", "assets/brand/appstore-shot-4.jpg"]}, "ads": {"kick": "Your ads on Meta and Apple Ads", "h2": ["Two channels running today.", "Three different promises."], "p": "Your newest Meta ads, running since 13 November 2026, are the only ones of your 22 live ads that send people to the App Store. On Apple Ads you show on 30 US search terms; two of the biggest say exactly what the person wants to do: check drugs together, and identify a pill.", "tabs": [{"tab": "Meta ad", "n": 12, "unit": "versions", "kind": "post", "chan": "Meta · running now", "page": "epocrates", "text": "epocrates offers primary care prescription support when you need it most.", "headline": "Primary care multi-tool", "domain": "APPS.APPLE.COM", "cta": "Install now", "src": "assets/ads/meta-install-2-feed.jpg", "hook": "“Make informed decisions faster”", "meta": "Meta · 3 ads in 12 versions · since 13 Nov 2026 · links to the App Store", "inad": "Your home screen on a phone in hand, “Make informed decisions faster” and a “Start using epocrates” button. The text offers primary care prescription support.", "promise": "One multi-tool for a primary care prescriber.", "today": "Your listing, then the same first launch as every other install.", "rebuild": "“Make informed decisions faster” first; one question, their role; their Quick Reference with four of your tools for that role before any price; the paywall opens over those tools with your own line, “Go beyond the basics with epocrates+”, the year first.", "flow": "a", "sub": "Headline “Primary care multi-tool”, with Install now"}, {"tab": "“drug checker app”", "term": "drug checker app", "n": 4, "unit": "search terms", "kind": "search", "chan": "Apple Ads · search", "hook": "“drug checker app”", "meta": "Apple Ads · search term · US · popularity 3.77 · account-level", "inad": "Your listing as the top result: your icon, “epocrates: Drug Info & Pill ID”, “Dosing, Interactions, & Labs” and your first App Store screenshots.", "promise": "Check these drugs together, now.", "today": "The same first launch as the Meta install.", "rebuild": "“Check drug-drug interactions” first; one question, what goes on the list; your Interaction Check with hydrocodone, then alprazolam, before any price; the paywall sets $15.00 a month billed yearly beside $24.99 monthly.", "flow": "b", "sub": "About 61% share of voice, 16 October to 16 November 2026"}, {"tab": "“pill id”", "term": "pill id", "n": 2, "unit": "search terms", "kind": "search", "chan": "Apple Ads · search", "hook": "“pill id”", "meta": "Apple Ads · search term · US · popularity 2.45 · account-level", "inad": "The same search ad as for “drug checker app”: your icon, your name and the same first screenshots, whatever they typed.", "promise": "Tell me what this pill is.", "today": "The same first launch as the Meta install.", "rebuild": "“Identify a mystery pill by shape, color, imprint” first; one question, what they can see on the pill; Pill ID finds demeclocycline 150 mg before any price; the paywall leads with your 4.4 stars and three reviews about Pill ID.", "flow": "c", "sub": "About 20% share of voice, 16 October to 16 November 2026"}], "more": "Also on your list, with no phone of their own: “contraindications” (35%), “drug search” (28%) and “drug” (9%), which would open the “drug checker app” flow; “pill identifier + drug search” (9%), which would open the “pill id” flow; and your own name, 79% on “epocrates: drug checker app” but only 2% on “epocrates”, worth defending. Your epocrates+ ads (“Go beyond the basics with epocrates+”, $149.95 for the first year; “Join 1M+ Confident Clinicians”) and your article ads, 19 of your 22 live ads, link to epocrates.com, so the app never sees that offer. Counts are ad versions and search terms, not spend; the search data is account-level.", "foot": "Adapty picks the flow at first open from the source the install came from: the Apple Ads keyword from Apple, the Meta campaign through your attribution, after a one-time SDK setup. Installs from your other searches keep today’s first launch until you choose to split them."}, "ideasH2": ["Ranked by what we would", "test first."], "outcome": {"h2": ["Five ideas,", "one first launch per source."], "k": "Run together", "t": "Every ad’s promise kept on the screen it pays on", "nums": [["+10–20%", "purchases"], ["+10–15%", "ARPU"]], "cap": "Adapty’s range for a structural change to the flow, not a measured lift for epocrates. They overlap, so they don’t add up: each flow is its own A/B test against today’s first launch, judged on what the installs from that ad or search earn.", "img": "assets/hero/value-b.png", "do": [["Do this week", "Open “drug checker app” installs on your Interaction Check", "One flow, built in Flow Builder from your own screens and live without an app release: the search that names the job opens on the tool, before any price."], ["Then", "One paywall, the source as the variable", "One template for all three: the headline, the tool above the plans and the proof change with the Meta campaign or the search term. $179.99 and $24.99 stay as listed."], ["And measure", "Judge each source on what it earns, not installs", "Adapty reports purchases, renewals and revenue for the Meta campaign, “drug checker app” and “pill id” separately, so spend follows the source that pays."]]}, "proto": {"kick": "Prototype · one first launch per ad", "h1": ["Two channels.", "Three first launches."], "sub": "One install from your “Primary care multi-tool” ad, one from the “drug checker app” search, one from “pill id”. Same tools, same prices; the screens are our proposals, built from your listing. In English only, like your app. Tap the steps, or tap inside any phone."}, "kept": ["Kept: your Interaction Check, Pill ID and Reference screens, as your listing shows them.", "Kept: “Go beyond the basics with epocrates+”, your own ad line.", "Kept: the roles your listing names: physicians, NPs, PAs, pharmacists and students.", "Kept: your 4.4 stars and clinicians’ reviews, word for word.", "Kept: $179.99 a year and $24.99 a month, as listed."], "_tiles": ["#525a67", "#499cac", "#c7796f", "#498da4", "#7cb1c3", "#4c5560", "#9ea2a8"]}</script>
 </body>
 </html>
